@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'VictorMono';
+  src: url('/fonts/VictorMono-VariableFont_wght.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-display: "VictorMono", sans-serif;
+  --color-light-principal: #EEF1EF;
+  --color-light-secundary: #F6E8EA;
+  --color-dark-principal: #141301;
+  --color-dark-secundary: #2D3047;
+}
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

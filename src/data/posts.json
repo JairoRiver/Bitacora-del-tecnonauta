@@ -1,0 +1,67 @@
+[
+    {
+        "Title": "Empezamos con Duckdb",
+        "Subtitle": "Guia de duck 1",
+        "Date": "28/12/2025",
+        "Categories": [
+            "Python",
+            "Datos",
+            "DuckDB"
+        ],
+        "HeroImage": "string url",
+        "Slug": "string",
+        "Content": [
+            {
+                "type": "p, c, i, t",
+                "value": "string",
+                "conf": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "Title": "Aprendiendo Rust",
+        "Subtitle": "Libro de Rust 1",
+        "Date": "29/12/2025",
+        "Categories": [
+            "Rust",
+            "Lenguajes de Progamación"
+        ],
+        "HeroImage": "string url",
+        "Slug": "string",
+        "Content": [
+            {
+                "type": "p, c, i, t",
+                "value": "string",
+                "conf": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    },
+    {
+        "Title": "Empezamos con MatplotLib",
+        "Subtitle": "Guia de Visualización con Python",
+        "Date": "30/12/2025",
+        "Categories": [
+            "Python",
+            "Datos",
+            "MatploLib"
+        ],
+        "HeroImage": "string url",
+        "Slug": "string",
+        "Content": [
+            {
+                "type": "p, c, i, t",
+                "value": "string",
+                "conf": [
+                    1,
+                    2
+                ]
+            }
+        ]
+    }
+]

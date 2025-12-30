@@ -1,0 +1,25 @@
+---
+import Logo from "../assets/logo.svg";
+import ThemeIcon from './ThemeIcon.astro';
+import CategoriesMenu from './CategoriesMenu.astro'
+---
+
+<header
+    class="flex justify-center content-center py-4 bg-light-principal dark:bg-dark-principal dark:text-light-principal"
+>
+    <nav class="flex justify-between content-center w-7xl">
+        <h2>
+            <a
+                href="/"
+                class="flex justify-center content-center font-bold text-lg"
+                >Bitácora del Tecnonauta <Logo
+                    width={25}
+                    height={25}
+                    class="ml-3 dark:stroke-light-principal"
+                />
+            </a>
+        </h2>
+        <ThemeIcon />
+        <CategoriesMenu />
+    </nav>
+</header>

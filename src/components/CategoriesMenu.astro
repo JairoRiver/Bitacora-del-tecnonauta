@@ -1,0 +1,26 @@
+---
+import { getCategories } from "../data/helpers/postsData";
+
+const categories = getCategories();
+---
+
+<div class="border-2 border-dark-principal dark:border-light-principal">
+    <ul class="group relative">
+        <li class="p-1 hover:bg-light-secundary dark:hover:bg-dark-secundary">Categorías</li>
+        <ul
+            class="hidden group-hover:[display:inherit] absolute top-full -left-8 w-60 bg-light-principal dark:bg-dark-principal dark:text-light-principal border-2 border-dark-principal dark:border-light-principal"
+        >
+            {
+                categories.map((category) => (
+                    <li class="p-2 hover:bg-light-secundary dark:hover:bg-dark-secundary">
+                        <a
+                            href={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                        >
+                            {category}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </ul>
+</div>
