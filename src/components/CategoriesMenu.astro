@@ -13,7 +13,7 @@ const categories = getCategories();
             {
                 categories.map((category) => (
                     <li class="p-2 hover:bg-light-secundary dark:hover:bg-dark-secundary">
-                        <a
+                        <a class="block w-full"
                             href={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
                         >
                             {category}
