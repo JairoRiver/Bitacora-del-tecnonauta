@@ -12,11 +12,11 @@
         "Slug": "string",
         "Content": [
             {
-                "type": "p, c, i, t",
+                "type": "p",
                 "value": "string",
                 "conf": [
-                    1,
-                    2
+                    "1",
+                    "2"
                 ]
             }
         ]
@@ -33,11 +33,11 @@
         "Slug": "string",
         "Content": [
             {
-                "type": "p, c, i, t",
+                "type": "p",
                 "value": "string",
                 "conf": [
-                    1,
-                    2
+                    "1",
+                    "2"
                 ]
             }
         ]
@@ -55,11 +55,11 @@
         "Slug": "string",
         "Content": [
             {
-                "type": "p, c, i, t",
+                "type": "p",
                 "value": "string",
                 "conf": [
-                    1,
-                    2
+                    "1",
+                    "2"
                 ]
             }
         ]
