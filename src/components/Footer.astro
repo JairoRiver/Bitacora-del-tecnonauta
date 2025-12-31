@@ -1,0 +1,23 @@
+---
+import LinkedinLogo from "../assets/linkedinLogo.svg"
+import GithubLogo from "../assets/githubLogo.svg"
+const today = new Date();
+---
+
+<footer
+    class="p-2 flex justify-center content-center bg-light-principal dark:bg-dark-principal"
+>
+    <p class=" dark:text-light-principal">
+        &copy; 2025 - {today.getFullYear()} Jairo Rivera. All rights reserved.
+    </p>
+    <div class="flex content-center justify-center gap-5 ml-5">
+        <a href="https://www.linkedin.com/in/jairoriveracueva/" target="_blank">
+            <span class="sr-only">Follow Me on Linkedin</span>
+            <LinkedinLogo width=30 height=30 class="fill-dark-principal hover:fill-dark-secundary dark:fill-light-principal dark:hover:fill-light-secundary"/>
+        </a>
+        <a href="https://github.com/JairoRiver" target="_blank">
+            <span class="sr-only">Jairo Rivera GitHub repo</span>
+            <GithubLogo width=30 height=30 class="fill-dark-principal hover:fill-dark-secundary dark:fill-light-principal dark:hover:fill-light-secundary"/>
+        </a>
+    </div>
+</footer>
