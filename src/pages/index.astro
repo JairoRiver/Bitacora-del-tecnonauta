@@ -1,8 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro'
+
+const testData = {
+	title: "Empezamos con Duckdb",
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
+    date: "28/12/2025",
+    categories: [
+            "Python",
+            "Datos",
+            "DuckDB"
+        ],
+    heroImage: "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
+	slug: "poost-duckdb"
+}
 ---
 
 <Layout>
 	<h1>Página principal</h1>
-	<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt optio adipisci voluptas recusandae distinctio nisi natus. Doloremque commodi consequuntur quasi nobis ipsum aperiam ullam, animi beatae, rerum alias doloribus dolorum.</p>
+	<section>
+		<Card title={testData.title} description={testData.description} date={testData.date} categories={testData.categories} heroImage={testData.heroImage} slug={testData.slug}/>
+	</section>
 </Layout>
