@@ -24,6 +24,7 @@ interface CardData {
     Date: string;
     Categories: string[];
     HeroImage: string;
+    Slug: string
 }
 
 const postsData = (postsRaw as unknown) as BlogPost[];
@@ -52,7 +53,8 @@ export function getCardInfo(posts: BlogPost[] = postsData): CardData[] {
             Description: descriptionText,
             Date: post.Date,
             Categories: post.Categories,
-            HeroImage: post.HeroImage
+            HeroImage: post.HeroImage,
+            Slug: post.Slug
         };
     });
 }

@@ -8,7 +8,7 @@
             "Datos",
             "DuckDB"
         ],
-        "HeroImage": "string url",
+        "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
         "Slug": "string",
         "Content": [
             {
@@ -29,7 +29,7 @@
             "Rust",
             "Lenguajes de Progamación"
         ],
-        "HeroImage": "string url",
+        "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
         "Slug": "string",
         "Content": [
             {
@@ -51,7 +51,7 @@
             "Datos",
             "MatploLib"
         ],
-        "HeroImage": "string url",
+        "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
         "Slug": "string",
         "Content": [
             {
