@@ -19,12 +19,12 @@ interface BlogPost {
 }
 
 interface CardData {
-    Title: string;
-    Description: string;
-    Date: string;
-    Categories: string[];
-    HeroImage: string;
-    Slug: string
+    title: string;
+    description: string;
+    date: string;
+    categories: string[];
+    heroImage: string;
+    slug: string
 }
 
 const postsData = (postsRaw as unknown) as BlogPost[];
@@ -49,12 +49,12 @@ export function getCardInfo(posts: BlogPost[] = postsData): CardData[] {
         const descriptionText = firstParagraph ? firstParagraph.value : post.Subtitle;
 
         return {
-            Title: post.Title,
-            Description: descriptionText,
-            Date: post.Date,
-            Categories: post.Categories,
-            HeroImage: post.HeroImage,
-            Slug: post.Slug
+            title: post.Title,
+            description: descriptionText,
+            date: post.Date,
+            categories: post.Categories,
+            heroImage: post.HeroImage,
+            slug: post.Slug
         };
     });
 }

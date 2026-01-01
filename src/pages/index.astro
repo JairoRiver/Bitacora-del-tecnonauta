@@ -1,24 +1,32 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro'
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 
-const testData = {
-	title: "Empezamos con Duckdb",
-    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
-    date: "28/12/2025",
-    categories: [
-            "Python",
-            "Datos",
-            "DuckDB"
-        ],
-    heroImage: "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
-	slug: "poost-duckdb"
-}
+import { getCardInfo } from "../data/helpers/postsData";
+
+const cardsData = getCardInfo();
 ---
 
 <Layout>
-	<h1>Página principal</h1>
-	<section>
-		<Card title={testData.title} description={testData.description} date={testData.date} categories={testData.categories} heroImage={testData.heroImage} slug={testData.slug}/>
+	<section class="flex w-full justify-center items-center">
+		<div class="max-w-11/12">
+			<h1 class="text-lg font-bold mt-5">
+				Bienvenidos navegantes tecnológicos.
+			</h1>
+			<p class="my-5">
+				En esta bitácora encontrarás una guía de tecnologías que he ido
+				descubriendo y aplicando con los años, espero que te sea útil.
+			</p>
+		</div>
+	</section>
+
+	<section class="flex w-full justify-center items-center flex-wrap">
+		{
+			cardsData.map((cardData) => (
+				<div class="m-3">
+					<Card {...cardData} />
+				</div>
+			))
+		}
 	</section>
 </Layout>

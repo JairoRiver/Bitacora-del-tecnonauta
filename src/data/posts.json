@@ -13,7 +13,7 @@
         "Content": [
             {
                 "type": "p",
-                "value": "string",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
                 "conf": [
                     "1",
                     "2"
@@ -27,14 +27,14 @@
         "Date": "29/12/2025",
         "Categories": [
             "Rust",
-            "Lenguajes de Progamación"
+            "Bajo Nivel"
         ],
         "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
         "Slug": "string",
         "Content": [
             {
                 "type": "p",
-                "value": "string",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
                 "conf": [
                     "1",
                     "2"
@@ -56,7 +56,72 @@
         "Content": [
             {
                 "type": "p",
-                "value": "string",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
+                "conf": [
+                    "1",
+                    "2"
+                ]
+            }
+        ]
+    },
+    {
+        "Title": "Empezamos con Duckdb",
+        "Subtitle": "Guia de duck 1",
+        "Date": "28/12/2025",
+        "Categories": [
+            "Python",
+            "Datos",
+            "DuckDB"
+        ],
+        "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
+        "Slug": "string",
+        "Content": [
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
+                "conf": [
+                    "1",
+                    "2"
+                ]
+            }
+        ]
+    },
+    {
+        "Title": "Aprendiendo Rust",
+        "Subtitle": "Libro de Rust 1",
+        "Date": "29/12/2025",
+        "Categories": [
+            "Rust",
+            "Bajo Nivel"
+        ],
+        "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
+        "Slug": "string",
+        "Content": [
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
+                "conf": [
+                    "1",
+                    "2"
+                ]
+            }
+        ]
+    },
+    {
+        "Title": "Empezamos con MatplotLib",
+        "Subtitle": "Guia de Visualización con Python",
+        "Date": "30/12/2025",
+        "Categories": [
+            "Python",
+            "Datos",
+            "MatploLib"
+        ],
+        "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
+        "Slug": "string",
+        "Content": [
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
                 "conf": [
                     "1",
                     "2"
