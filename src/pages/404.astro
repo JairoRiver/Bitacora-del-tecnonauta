@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <section class="w-full flex flex-col justify-center items-center">
+        <h1
+            class="mt-10 font-bold text-9xl text-dark-text-secundary dark:text-light-text-secundary"
+        >
+            404
+        </h1>
+        <p class="mt-6 font-semibold text-3xl">¿Te has pedido navegante?</p>
+        <p class="mt-6 font-semibold text-3xl">Vuelve a un punto seguro</p>
+        <div class="mt-9 w-full flex justify-evenly items-center gap-4">
+            <button
+                onclick="history.back()"
+                class="px-6 py-3 font-semibold text-dark-principal dark:text-light-principal border-2 border-dark-principal dark:border-light-principal rounded-lg hover:bg-dark-principal hover:text-light-principal dark:hover:bg-light-principal dark:hover:text-dark-principal transition-all"
+            >
+                ← Volver atrás
+            </button>
+
+            <a
+                href="/"
+                class="px-6 py-3 font-semibold bg-dark-principal text-light-principal dark:bg-light-principal dark:text-dark-principal rounded-lg hover:opacity-80 transition-all"
+            >
+                Ir al Inicio
+            </a>
+        </div>
+    </section>
+</Layout>
