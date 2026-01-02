@@ -1,5 +1,5 @@
 ---
-import { getCategories } from "../data/helpers/postsData";
+import { getCategories, parseRouteName } from "../data/helpers/postsData";
 
 const categories = getCategories();
 ---
@@ -14,7 +14,7 @@ const categories = getCategories();
                 categories.map((category) => (
                     <li class="p-2 hover:bg-light-secundary dark:hover:bg-dark-secundary">
                         <a class="block w-full"
-                            href={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                            href={`/category/${parseRouteName(category)}`}
                         >
                             {category}
                         </a>

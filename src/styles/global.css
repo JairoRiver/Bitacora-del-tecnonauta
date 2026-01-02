@@ -14,9 +14,11 @@
   --color-light-secundary: #F6E8EA;
   --color-light-third: #F3F7F0;
   --color-light-fourth: #C6D8D3;
+  --color-light-text-secundary: #FAF4D3;
   --color-dark-principal: #141301;
   --color-dark-secundary: #2D3047;
   --color-dark-third: #19323C;
   --color-dark-fourth: #3A3335;
+  --color-dark-text-secundary: #004643;
 }
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));

@@ -58,3 +58,7 @@ export function getCardInfo(posts: BlogPost[] = postsData): CardData[] {
         };
     });
 }
+
+export function parseRouteName(name: string): string {
+    return name.toLowerCase().replace(/\s+/g, "-")
+}

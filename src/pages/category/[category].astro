@@ -1,0 +1,46 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro"
+import {
+    getCategories,
+    parseRouteName,
+    getCardInfo,
+} from "../../data/helpers/postsData";
+
+export async function getStaticPaths() {
+    const categories = getCategories();
+    const cardsData = getCardInfo();
+
+    return categories.map((category) => {
+        let cardsFilters = cardsData.filter((card) =>
+            card.categories.includes(category),
+        );
+        return {
+            params: { category: parseRouteName(category) },
+            props: { posts: cardsFilters, categoryName: category },
+        };
+    });
+}
+
+const { posts, categoryName } = Astro.props;
+---
+
+<Layout>
+    <section class="flex w-full justify-center items-center">
+		<div class="max-w-11/12">
+			<h1 class="text-lg font-bold mt-5">
+				Post que te pueden interesar de la categoría <span class="text-dark-text-secundary dark:text-light-text-secundary">{categoryName}</span>:
+			</h1>
+		</div>
+	</section>
+
+    <section class="flex w-full justify-center items-center flex-wrap">
+		{
+			posts.map((cardData) => (
+				<div class="m-3">
+					<Card {...cardData} />
+				</div>
+			))
+		}
+	</section>
+</Layout>
