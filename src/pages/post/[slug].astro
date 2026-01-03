@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+import { getPostsList, getBlogPost } from "../../data/helpers/postsData";
+
+export async function getStaticPaths() {
+    const blogPostsList = getPostsList();
+
+    return blogPostsList.map((blogPost) => {
+        const blogContent = getBlogPost(blogPost.Slug);
+        return {
+            params: { slug: blogPost.Slug },
+            props: { blogContent },
+        };
+    });
+}
+
+const { blogContent } = Astro.props;
+---
+
+<Layout>
+    <div class="flex flex-col w-full justify-center items-center">
+        <section class="w-11/12 flex flex-col items-start">
+            <h1 class="mt-5 text-3xl font-bold">{blogContent.Title}</h1>
+        </section>
+
+        <section class="w-full justify-center items-center">
+            <img
+                src={blogContent.HeroImage}
+                alt=`image of blog post ${blogContent.Title}`
+                class="rounded-xl w-3/4 lg:w-3/7 h-auto max-w-4xl mx-auto mt-8 object-cover aspect-video shadow-md shadow-dark-third dark:shadow-light-third"
+            />
+        </section>
+
+        <section class="w-11/12 flex flex-col items-start">
+            <p class="mt-5 text-sm">{blogContent.Date}</p>
+            <div class="mt-2 -ml-3">
+                {
+                    blogContent.Categories.map((category) => (
+                        <a
+                            href={`/category/${category.toLowerCase().replace(/\s+/g, "-")}`}
+                            class="cursor-pointer ml-3 font-semibold"
+                        >
+                            [{category}]
+                        </a>
+                    ))
+                }
+            </div>
+
+            <h2 class="mt-2 text-xl font-bold">{blogContent.Subtitle}</h2>
+        </section>
+    </div>
+</Layout>

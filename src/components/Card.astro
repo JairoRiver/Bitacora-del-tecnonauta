@@ -17,7 +17,7 @@ const { title, description, date, categories, heroImage, slug } = Astro.props;
     class="max-w-md h-80 border-2 border-dark-secundary dark:border-light-secundary rounded-lg flex flex-col items-center bg-light-fourth dark:bg-dark-fourth"
 >
     <section class="w-full flex flex-col">
-        <a href=`post/${parseRouteName(slug)}` class="w-full flex justify-center items-center">
+        <a href=`/post/${parseRouteName(slug)}` class="w-full flex justify-center items-center">
             <img
                 src={heroImage}
                 alt=`image of ${title}`

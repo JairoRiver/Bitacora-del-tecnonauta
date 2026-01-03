@@ -9,7 +9,7 @@
             "DuckDB"
         ],
         "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
-        "Slug": "string",
+        "Slug": "slug-1",
         "Content": [
             {
                 "type": "p",
@@ -30,7 +30,7 @@
             "Bajo Nivel"
         ],
         "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
-        "Slug": "string",
+        "Slug": "slug-2",
         "Content": [
             {
                 "type": "p",
@@ -52,7 +52,7 @@
             "MatploLib"
         ],
         "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
-        "Slug": "string",
+        "Slug": "slug-3",
         "Content": [
             {
                 "type": "p",
@@ -74,7 +74,7 @@
             "DuckDB"
         ],
         "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
-        "Slug": "string",
+        "Slug": "slug-4",
         "Content": [
             {
                 "type": "p",
@@ -95,7 +95,7 @@
             "Bajo Nivel"
         ],
         "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
-        "Slug": "string",
+        "Slug": "slug-5",
         "Content": [
             {
                 "type": "p",
@@ -117,7 +117,7 @@
             "MatploLib"
         ],
         "HeroImage": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996119/samples/landscapes/nature-mountains.jpg",
-        "Slug": "string",
+        "Slug": "slug-6",
         "Content": [
             {
                 "type": "p",

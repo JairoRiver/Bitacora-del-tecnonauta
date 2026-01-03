@@ -27,6 +27,11 @@ interface CardData {
     slug: string
 }
 
+interface BlogPostList {
+    Title: string;
+    Slug: string;
+}
+
 const postsData = (postsRaw as unknown) as BlogPost[];
 
 /**
@@ -61,4 +66,17 @@ export function getCardInfo(posts: BlogPost[] = postsData): CardData[] {
 
 export function parseRouteName(name: string): string {
     return name.toLowerCase().replace(/\s+/g, "-")
+}
+
+export function getPostsList(posts: BlogPost[] = postsData): BlogPostList[] {
+    return (
+        posts.map((post) => {
+            return { Title: post.Title, Slug: post.Slug }
+        })
+    )
+}
+
+export function getBlogPost(slug: string, posts: BlogPost[] = postsData): BlogPost {
+    const blogPost = posts.find(post => post.Slug === slug) as BlogPost
+    return blogPost
 }
