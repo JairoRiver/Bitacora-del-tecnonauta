@@ -1,0 +1,21 @@
+---
+import type { ContentType, ParagraphType } from "../../data/helpers/postsData";
+import { TAILWIND_PARAGRAPH_MAP } from "../../constants/mappings";
+
+interface Props {
+    type: ContentType;
+    value: string;
+    conf: ParagraphType[];
+}
+
+const { type, value, conf } = Astro.props;
+const activeClasses = conf.map((c) => TAILWIND_PARAGRAPH_MAP[c]);
+---
+
+{
+    type === "p" && (
+        <p class:list={["mt-3", "max-w-fit", "lg:max-w-4/5", ...activeClasses]}>
+            {value}
+        </p>
+    )
+}

@@ -1,11 +1,18 @@
 import postsRaw from '../posts.json';
 
-type ContentType = 'p' | 'c' | 'i' | 't';
+/*
+  -p is for paragraphs
+  -c is for code
+  -i is for image
+  -t is for table
+*/
+export type ContentType = 'p' | 'c' | 'i' | 't';
+export type ParagraphType = 'size-lg' | 'bold' | 'italic' | 'underline' | 'color-1' | 'color-2' | 'color-3';
 
 interface ContentBlock {
     type: ContentType;
     value: string;
-    conf: string[];
+    conf: ParagraphType[];
 }
 
 interface BlogPost {

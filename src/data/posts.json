@@ -14,10 +14,17 @@
             {
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
-                "conf": [
-                    "1",
-                    "2"
-                ]
+                "conf": []
+            },
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
+                "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "p",
+                "value": "Ipsam in vitae minima",
+                "conf": ["color-2"]
             }
         ]
     },
@@ -35,10 +42,17 @@
             {
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
-                "conf": [
-                    "1",
-                    "2"
-                ]
+                "conf": []
+            },
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
+                "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "p",
+                "value": "Ipsam in vitae minima",
+                "conf": ["color-2"]
             }
         ]
     },
@@ -57,10 +71,17 @@
             {
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
-                "conf": [
-                    "1",
-                    "2"
-                ]
+                "conf": []
+            },
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
+                "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "p",
+                "value": "Ipsam in vitae minima",
+                "conf": ["color-2"]
             }
         ]
     },
@@ -79,10 +100,17 @@
             {
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
-                "conf": [
-                    "1",
-                    "2"
-                ]
+                "conf": []
+            },
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
+                "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "p",
+                "value": "Ipsam in vitae minima",
+                "conf": ["color-2"]
             }
         ]
     },
@@ -100,10 +128,17 @@
             {
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
-                "conf": [
-                    "1",
-                    "2"
-                ]
+                "conf": []
+            },
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
+                "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "p",
+                "value": "Ipsam in vitae minima",
+                "conf": ["color-2"]
             }
         ]
     },
@@ -122,10 +157,17 @@
             {
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam in vitae minima vero enim expedita quos, molestias consequatur omnis. Minus, eum perspiciatis dignissimos provident esse optio veritatis beatae possimus consectetur.",
-                "conf": [
-                    "1",
-                    "2"
-                ]
+                "conf": []
+            },
+            {
+                "type": "p",
+                "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
+                "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "p",
+                "value": "Ipsam in vitae minima",
+                "conf": ["color-2"]
             }
         ]
     }
