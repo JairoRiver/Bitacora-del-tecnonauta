@@ -8,11 +8,13 @@ import postsRaw from '../posts.json';
 */
 export type ParagraphType = 'p';
 export type CodeType = 'c';
+export type ImageType = 'i';
 export type ParagraphStyleType = 'size-lg' | 'bold' | 'italic' | 'underline' | 'color-1' | 'color-2' | 'color-3';
 export type LanguageType = 'SQL' | 'TypeScript' | 'Go' | 'Python' | 'Rust';
 export type CodeStyleType = 'color-1' | 'color-2' | 'color-3';
 export type CodeValueType = { language: LanguageType; text: string; };
-type ContentBlock = TextBlock | CodeBlock;
+export type ImageValueType = {src: string, caption: string};
+type ContentBlock = TextBlock | CodeBlock | ImageBlock;
 
 interface TextBlock {
     type: ParagraphType;
@@ -24,6 +26,11 @@ interface CodeBlock {
     type: CodeType;
     value: CodeValueType;
     conf: CodeStyleType;
+}
+
+interface ImageBlock {
+    type: ImageType;
+    value: ImageValueType
 }
 
 interface BlogPost {

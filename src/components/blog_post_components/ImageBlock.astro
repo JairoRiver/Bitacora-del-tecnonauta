@@ -1,0 +1,19 @@
+---
+import type { ImageType, ImageValueType } from "../../data/helpers/postsData";
+
+interface Props {
+    type: ImageType;
+    value: ImageValueType;
+}
+
+const { type, value } = Astro.props;
+---
+
+{
+    type === "i" && (
+        <section class="mt-5 w-full flex flex-col justify-center items-center">
+            <img src={value.src} alt={value.caption} class="rounded-xl w-3/4 md:w-3/7 h-auto max-w-3xl object-cover aspect-video"/>
+            <p class="mt-1 text-xs">{value.caption}</p>
+        </section>
+    )
+}
