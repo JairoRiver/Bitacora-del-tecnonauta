@@ -22,9 +22,17 @@
                 "conf": ["size-lg", "bold", "italic", "underline"]
             },
             {
+                "type": "c",
+                "value": {
+                    "language": "SQL",
+                    "text": "SELECT uno,\n       dos,\n       tres\nFROM my_database;"
+                },
+                "conf": "color-1"
+            },
+            {
                 "type": "p",
                 "value": "Ipsam in vitae minima",
-                "conf": ["color-2"]
+                "conf": ["color-1"]
             }
         ]
     },
@@ -48,6 +56,14 @@
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
                 "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "c",
+                "value": {
+                    "language": "SQL",
+                    "text": "SELECT uno,\n       dos,\n       tres\nFROM my_database;"
+                },
+                "conf": "color-2"
             },
             {
                 "type": "p",
@@ -79,9 +95,17 @@
                 "conf": ["size-lg", "bold", "italic", "underline"]
             },
             {
+                "type": "c",
+                "value": {
+                    "language": "SQL",
+                    "text": "SELECT uno,\n       dos,\n       tres\nFROM my_database;"
+                },
+                "conf": "color-3"
+            },
+            {
                 "type": "p",
                 "value": "Ipsam in vitae minima",
-                "conf": ["color-2"]
+                "conf": ["color-3"]
             }
         ]
     },
@@ -106,6 +130,14 @@
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
                 "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "c",
+                "value": {
+                    "language": "SQL",
+                    "text": "SELECT uno,\n       dos,\n       tres\nFROM my_database;"
+                },
+                "conf": "color-1"
             },
             {
                 "type": "p",
@@ -136,6 +168,14 @@
                 "conf": ["size-lg", "bold", "italic", "underline"]
             },
             {
+                "type": "c",
+                "value": {
+                    "language": "SQL",
+                    "text": "SELECT uno,\n       dos,\n       tres\nFROM my_database;"
+                },
+                "conf": "color-2"
+            },
+            {
                 "type": "p",
                 "value": "Ipsam in vitae minima",
                 "conf": ["color-2"]
@@ -163,6 +203,14 @@
                 "type": "p",
                 "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. ",
                 "conf": ["size-lg", "bold", "italic", "underline"]
+            },
+            {
+                "type": "c",
+                "value": {
+                    "language": "SQL",
+                    "text": "SELECT uno,\n       dos,\n       tres\nFROM my_database;"
+                },
+                "conf": "color-3"
             },
             {
                 "type": "p",

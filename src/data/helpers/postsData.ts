@@ -6,13 +6,24 @@ import postsRaw from '../posts.json';
   -i is for image
   -t is for table
 */
-export type ContentType = 'p' | 'c' | 'i' | 't';
-export type ParagraphType = 'size-lg' | 'bold' | 'italic' | 'underline' | 'color-1' | 'color-2' | 'color-3';
+export type ParagraphType = 'p';
+export type CodeType = 'c';
+export type ParagraphStyleType = 'size-lg' | 'bold' | 'italic' | 'underline' | 'color-1' | 'color-2' | 'color-3';
+export type LanguageType = 'SQL' | 'TypeScript' | 'Go' | 'Python' | 'Rust';
+export type CodeStyleType = 'color-1' | 'color-2' | 'color-3';
+export type CodeValueType = { language: LanguageType; text: string; };
+type ContentBlock = TextBlock | CodeBlock;
 
-interface ContentBlock {
-    type: ContentType;
+interface TextBlock {
+    type: ParagraphType;
     value: string;
-    conf: ParagraphType[];
+    conf: ParagraphStyleType[];
+}
+
+interface CodeBlock {
+    type: CodeType;
+    value: CodeValueType;
+    conf: CodeStyleType;
 }
 
 interface BlogPost {

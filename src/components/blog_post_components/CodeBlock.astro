@@ -1,0 +1,78 @@
+---
+import { Code } from "astro/components";
+import CopyIcon from "../../assets/copyIcon.svg";
+import CheckIcon from "../../assets/checkIcon.svg";
+
+import type {
+    CodeType,
+    CodeValueType,
+    CodeStyleType,
+} from "../../data/helpers/postsData";
+import { LANGUAGE_STYLE_MAP, CODE_STYLE_MAP } from "../../constants/mappings";
+
+interface Props {
+    type: CodeType;
+    value: CodeValueType;
+    conf: CodeStyleType;
+}
+
+const { type, value, conf } = Astro.props;
+const language = LANGUAGE_STYLE_MAP[value.language];
+const theme = CODE_STYLE_MAP[conf];
+---
+
+{
+    type === "c" && (
+        <section class="relative group my-8 lg:max-w-3/5">
+            <div class="absolute right-14 top-7 -translate-y-1/2 z-20">
+                <span class="bg-dark-principal dark:bg-light-principal text-light-principal dark:text-dark-principal text-xs font-bold px-2 py-1 rounded border uppercase">
+                    {value.language}
+                </span>
+            </div>
+
+            <button
+                class="copy-button absolute right-2 top-3 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-2 rounded-md bg-light-principal hover:bg-light-secundary text-dark-principal border"
+                data-code={value.text}
+                title="Copiar código"
+            >
+                <CopyIcon width="13" height="13" class="stroke-dark-principal icon-copy w-4 h-4" />
+                <CheckIcon class="icon-check hidden w-4 h-4 text-green-400" />
+            </button>
+
+            <Code
+                code={value.text}
+                lang={language}
+                theme={theme}
+                class="px-4 py-3 rounded-md"
+            />
+        </section>
+    )
+}
+
+<script>
+    const copyButtons = document.querySelectorAll('.copy-button');
+
+    copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const code = button.getAttribute('data-code') || '';
+            const iconCopy = button.querySelector('.icon-copy');
+            const iconCheck = button.querySelector('.icon-check');
+
+            try {
+                await navigator.clipboard.writeText(code);
+                
+                // Feedback visual
+                iconCopy?.classList.add('hidden');
+                iconCheck?.classList.remove('hidden');
+
+                // Back to original Icon
+                setTimeout(() => {
+                    iconCopy?.classList.remove('hidden');
+                    iconCheck?.classList.add('hidden');
+                }, 2000);
+            } catch (err) {
+                console.error('Error al copiar: ', err);
+            }
+        });
+    });
+</script>

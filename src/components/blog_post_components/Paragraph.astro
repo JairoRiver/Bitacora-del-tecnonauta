@@ -1,11 +1,14 @@
 ---
-import type { ContentType, ParagraphType } from "../../data/helpers/postsData";
+import type {
+    ParagraphType,
+    ParagraphStyleType,
+} from "../../data/helpers/postsData";
 import { TAILWIND_PARAGRAPH_MAP } from "../../constants/mappings";
 
 interface Props {
-    type: ContentType;
+    type: ParagraphType;
     value: string;
-    conf: ParagraphType[];
+    conf: ParagraphStyleType[];
 }
 
 const { type, value, conf } = Astro.props;

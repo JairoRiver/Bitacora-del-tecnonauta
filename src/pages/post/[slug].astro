@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Paragraph from "../../components/blog_post_components/Paragraph.astro";
+import CodeBlock from "../../components/blog_post_components/CodeBlock.astro";
 
 import { getPostsList, getBlogPost } from "../../data/helpers/postsData";
 
@@ -56,6 +57,15 @@ const { blogContent } = Astro.props;
                         if (content.type === "p") {
                             return (
                                 <Paragraph
+                                    type={content.type}
+                                    value={content.value}
+                                    conf={content.conf}
+                                />
+                            );
+                        }
+                        if (content.type === "c") {
+                            return (
+                                <CodeBlock
                                     type={content.type}
                                     value={content.value}
                                     conf={content.conf}
