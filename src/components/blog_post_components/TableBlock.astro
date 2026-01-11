@@ -1,0 +1,140 @@
+---
+import type {
+    TableType,
+    TableConf,
+    TableValueType,
+} from "../../data/helpers/postsData";
+
+import { TAILWIND_TABLE_CELL_MAP } from "../../constants/mappings";
+
+interface Props {
+    type: TableType;
+    value: TableValueType;
+    conf: TableConf;
+}
+
+const { type, value, conf } = Astro.props;
+const [headers, ...rows] = value;
+
+const colorPositive = "text-dark-text-positive dark:text-light-text-positive";
+const colorNegative = "text-dark-text-negative dark:text-light-text-negative";
+
+// 1. Convertimos los estilos generales de la tabla
+const generalTableClasses = conf.table_styles
+    .map((s) => TAILWIND_TABLE_CELL_MAP[s] || "")
+    .join(" ");
+
+// 2. Función para obtener estilos de columna específicos
+const getColumnStyles = (val: string | number, index: number) => {
+    const headerName = headers[index];
+
+    // Buscamos si existe una configuración para este índice o para este nombre de cabecera
+    const config = conf.column_style.find(
+        (cs) => cs.header === index || cs.header === headerName,
+    );
+
+    if (!config) return "";
+
+    // Mapeamos los estilos encontrados a clases de Tailwind
+    let configStyle = config.style
+        .map((s) => TAILWIND_TABLE_CELL_MAP[s] || "")
+        .join(" ");
+
+    if (!config.colored_numbers) return configStyle;
+
+    let numericValue: number;
+
+    if (typeof val === "number") {
+        numericValue = val;
+    } else {
+        numericValue = parseFloat(val.replace(/,/g, "").replace("%", ""));
+        if (isNaN(numericValue)) return configStyle;
+    }
+
+    if (numericValue > 0) return configStyle.concat(" ", colorPositive);
+    if (numericValue < 0) return configStyle.concat(" ", colorNegative);
+
+    return configStyle;
+};
+---
+
+{
+    type === "t" && (
+        <div class="w-full flex justify-center items-center">
+            <section class="custom-scrollbar mt-5 relative overflow-auto max-h-96 w-11/12 max-w-11/12 block rounded-lg border border-dark-secundary dark:border-light-secundary">
+                <table
+                    class:list={[
+                        "min-w-full divide-y divide-dark-fourth dark:divide-light-fourth text-center border-collapse",
+                        generalTableClasses,
+                    ]}
+                >
+                    {conf.has_header && (
+                        <thead class="bg-slate-50 dark:bg-slate-900/50 sticky top-0">
+                            <tr>
+                                {headers.map((header) => (
+                                    <th class="px-1 py-2 tracking-wider">
+                                        {header}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                    )}
+
+                    <tbody class="divide-y divide-dark-third dark:divide-light-third">
+                        {rows.map((row) => (
+                            <tr class="bg-light-table-principal dark:bg-dark-table-principal hover:bg-white dark:hover:bg-black transition-colors duration-200 even:bg-light-table-secundary dark:even:bg-dark-table-secundary">
+                                {row.map((cell, index) => (
+                                    <td
+                                        class:list={[
+                                            "px-6 py-2 whitespace-nowrap",
+                                            getColumnStyles(cell, index),
+                                        ]}
+                                    >
+                                        {cell}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    )
+}
+<style is:global>
+    /*Webkit (Chrome, Safari, Edge) */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(156, 163, 175, 0.3);
+        border-radius: 10px;
+        border: 2px solid transparent; /* Crea un efecto de padding */
+        background-clip: content-box;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(156, 163, 175, 0.5);
+    }
+
+    /* Firefox */
+    .custom-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(156, 163, 175, 0.3) transparent;
+    }
+
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+</style>

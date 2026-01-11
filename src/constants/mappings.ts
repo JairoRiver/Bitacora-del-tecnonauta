@@ -1,4 +1,4 @@
-import type { LanguageType, ParagraphStyleType, CodeStyleType } from "../data/helpers/postsData"
+import type { LanguageType, ParagraphStyleType, CodeStyleType, CellStyleType } from "../data/helpers/postsData"
 import type { ComponentProps } from 'astro/types';
 import { Code } from "astro/components";
 type CodeProps = ComponentProps<typeof Code>;
@@ -14,6 +14,15 @@ export const TAILWIND_PARAGRAPH_MAP: Record<ParagraphStyleType, string> = {
     'color-2': 'text-dark-text-secundary dark:text-light-text-secundary',
     'color-3': 'text-dark-text-third dark:text-light-text-third',
 };
+
+export const TAILWIND_TABLE_CELL_MAP: Record<CellStyleType, string> = {
+    'size-lg': 'text-lg',
+    'size-md': 'text-sm',
+    'size-xs': 'text-xs',
+    'bold': 'font-bold',
+    'italic': 'italic',
+    'underline': 'underline'
+}
 
 export const LANGUAGE_STYLE_MAP: Record<LanguageType, AstroCodeLanguage> = {
     'SQL': 'sql',

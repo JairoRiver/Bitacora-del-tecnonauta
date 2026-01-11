@@ -37,6 +37,41 @@
                 }
             },
             {
+                "type": "t",
+                "conf": {
+                    "has_header": true,
+                    "table_styles": ["size-xs", "color-1"],
+                    "column_style":[
+                        {
+                            "header": "Track",
+                            "style": ["bold", "size-sm"]
+                        },
+                        {
+                            "header": 8,
+                            "colored_numbers":true,
+                            "style":["underline"]
+                        }
+                    ]
+                },
+                "value": [
+                            ["Track", "Artist(s)", "Year", "Streams", "BPM", "Key", "Mode", "Dance %", "Energy %"],
+                            ["Seven (feat. Latto)", "Latto, Jung Kook", "2023", "141,381,703", "-125", "B", "Major", "80", "-83"],
+                            ["LALA", "Myke Towers", "2023", "133,716,286", "92", "C#", "Major", "71", "74"],
+                            ["vampire", "Olivia Rodrigo", "2023", "140,003,974", "138", "F", "Major", "51", "53"],
+                            ["Cruel Summer", "Taylor Swift", "2019", "800,840,817", "170", "A", "Major", "55", "72"],
+                            ["WHERE SHE GOES", "Bad Bunny", "2023", "303,236,322", "144", "A", "Minor", "65", "80"],
+                            ["Sprinter", "Dave, Central Cee", "2023", "183,706,234", "141", "C#", "Major", "92", "58"],
+                            ["Ella Baila Sola", "Eslabon Armado, Peso Pluma", "2023", "725,980,112", "148", "F", "Minor", "67", "76"],
+                            ["Columbia", "Quevedo", "2023", "58,149,378", "100", "F", "Major", "67", "71"],
+                            ["fukumean", "Gunna", "2023", "95,217,315", "130", "C#", "Minor", "85", "62"],
+                            ["La Bebe - Remix", "Peso Pluma, Yng Lvcas", "2023", "553,634,067", "170", "D", "Minor", "81", "48"],
+                            ["un x100to", "Bad Bunny, Grupo Frontera", "2023", "505,671,438", "83", "F#", "Minor", "57", "72"],
+                            ["Super Shy", "NewJeans", "2023", "58,255,150", "150", "F", "Minor", "78", "82"],
+                            ["Flowers", "Miley Cyrus", "2023", "1,316,855,716", "118", "-", "Major", "71", "68"],
+                            ["Daylight", "David Kushner", "2023", "387,570,742", "130", "D", "Minor", "51", "43"]
+                        ]
+            },
+            {
                 "type": "p",
                 "value": "Ipsam in vitae minima",
                 "conf": ["color-1"]
@@ -78,6 +113,40 @@
                     "src": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996110/samples/animals/reindeer.jpg",
                     "caption": "Esta es la descripción de una imágen."
                 }
+            },
+            {
+                "type": "t",
+                "conf": {
+                    "has_header": false,
+                    "table_styles": ["size-xs", "color-1"],
+                    "column_style":[
+                        {
+                            "header": 1,
+                            "style": ["bold", "size-lg"]
+                        },
+                        {
+                            "header": 8,
+                            "style":["underline"]
+                        }
+                    ]
+                },
+                "value": [
+                            ["Track", "Artist(s)", "Year", "Streams", "BPM", "Key", "Mode", "Dance %", "Energy %"],
+                            ["Seven (feat. Latto)", "Latto, Jung Kook", "2023", "141,381,703", "125", "B", "Major", "80", "83"],
+                            ["LALA", "Myke Towers", "2023", "133,716,286", "92", "C#", "Major", "71", "74"],
+                            ["vampire", "Olivia Rodrigo", "2023", "140,003,974", "138", "F", "Major", "51", "53"],
+                            ["Cruel Summer", "Taylor Swift", "2019", "800,840,817", "170", "A", "Major", "55", "72"],
+                            ["WHERE SHE GOES", "Bad Bunny", "2023", "303,236,322", "144", "A", "Minor", "65", "80"],
+                            ["Sprinter", "Dave, Central Cee", "2023", "183,706,234", "141", "C#", "Major", "92", "58"],
+                            ["Ella Baila Sola", "Eslabon Armado, Peso Pluma", "2023", "725,980,112", "148", "F", "Minor", "67", "76"],
+                            ["Columbia", "Quevedo", "2023", "58,149,378", "100", "F", "Major", "67", "71"],
+                            ["fukumean", "Gunna", "2023", "95,217,315", "130", "C#", "Minor", "85", "62"],
+                            ["La Bebe - Remix", "Peso Pluma, Yng Lvcas", "2023", "553,634,067", "170", "D", "Minor", "81", "48"],
+                            ["un x100to", "Bad Bunny, Grupo Frontera", "2023", "505,671,438", "83", "F#", "Minor", "57", "72"],
+                            ["Super Shy", "NewJeans", "2023", "58,255,150", "150", "F", "Minor", "78", "82"],
+                            ["Flowers", "Miley Cyrus", "2023", "1,316,855,716", "118", "-", "Major", "71", "68"],
+                            ["Daylight", "David Kushner", "2023", "387,570,742", "130", "D", "Minor", "51", "43"]
+                        ]
             },
             {
                 "type": "p",
@@ -124,6 +193,40 @@
                 }
             },
             {
+                "type": "t",
+                "conf": {
+                    "has_header": true,
+                    "table_styles": ["size-xs", "color-1"],
+                    "column_style":[
+                        {
+                            "header": "Track",
+                            "style": ["bold", "size-lg"]
+                        },
+                        {
+                            "header": 8,
+                            "style":["underline"]
+                        }
+                    ]
+                },
+                "value": [
+                            ["Track", "Artist(s)", "Year", "Streams", "BPM", "Key", "Mode", "Dance %", "Energy %"],
+                            ["Seven (feat. Latto)", "Latto, Jung Kook", "2023", "141,381,703", "125", "B", "Major", "80", "83"],
+                            ["LALA", "Myke Towers", "2023", "133,716,286", "92", "C#", "Major", "71", "74"],
+                            ["vampire", "Olivia Rodrigo", "2023", "140,003,974", "138", "F", "Major", "51", "53"],
+                            ["Cruel Summer", "Taylor Swift", "2019", "800,840,817", "170", "A", "Major", "55", "72"],
+                            ["WHERE SHE GOES", "Bad Bunny", "2023", "303,236,322", "144", "A", "Minor", "65", "80"],
+                            ["Sprinter", "Dave, Central Cee", "2023", "183,706,234", "141", "C#", "Major", "92", "58"],
+                            ["Ella Baila Sola", "Eslabon Armado, Peso Pluma", "2023", "725,980,112", "148", "F", "Minor", "67", "76"],
+                            ["Columbia", "Quevedo", "2023", "58,149,378", "100", "F", "Major", "67", "71"],
+                            ["fukumean", "Gunna", "2023", "95,217,315", "130", "C#", "Minor", "85", "62"],
+                            ["La Bebe - Remix", "Peso Pluma, Yng Lvcas", "2023", "553,634,067", "170", "D", "Minor", "81", "48"],
+                            ["un x100to", "Bad Bunny, Grupo Frontera", "2023", "505,671,438", "83", "F#", "Minor", "57", "72"],
+                            ["Super Shy", "NewJeans", "2023", "58,255,150", "150", "F", "Minor", "78", "82"],
+                            ["Flowers", "Miley Cyrus", "2023", "1,316,855,716", "118", "-", "Major", "71", "68"],
+                            ["Daylight", "David Kushner", "2023", "387,570,742", "130", "D", "Minor", "51", "43"]
+                        ]
+            },
+            {
                 "type": "p",
                 "value": "Ipsam in vitae minima",
                 "conf": ["color-3"]
@@ -166,6 +269,40 @@
                     "src": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996110/samples/animals/reindeer.jpg",
                     "caption": "Esta es la descripción de una imágen."
                 }
+            },
+            {
+                "type": "t",
+                "conf": {
+                    "has_header": true,
+                    "table_styles": ["size-xs", "color-1"],
+                    "column_style":[
+                        {
+                            "header": "Track",
+                            "style": ["bold", "size-lg"]
+                        },
+                        {
+                            "header": 8,
+                            "style":["underline"]
+                        }
+                    ]
+                },
+                "value": [
+                            ["Track", "Artist(s)", "Year", "Streams", "BPM", "Key", "Mode", "Dance %", "Energy %"],
+                            ["Seven (feat. Latto)", "Latto, Jung Kook", "2023", "141,381,703", "125", "B", "Major", "80", "83"],
+                            ["LALA", "Myke Towers", "2023", "133,716,286", "92", "C#", "Major", "71", "74"],
+                            ["vampire", "Olivia Rodrigo", "2023", "140,003,974", "138", "F", "Major", "51", "53"],
+                            ["Cruel Summer", "Taylor Swift", "2019", "800,840,817", "170", "A", "Major", "55", "72"],
+                            ["WHERE SHE GOES", "Bad Bunny", "2023", "303,236,322", "144", "A", "Minor", "65", "80"],
+                            ["Sprinter", "Dave, Central Cee", "2023", "183,706,234", "141", "C#", "Major", "92", "58"],
+                            ["Ella Baila Sola", "Eslabon Armado, Peso Pluma", "2023", "725,980,112", "148", "F", "Minor", "67", "76"],
+                            ["Columbia", "Quevedo", "2023", "58,149,378", "100", "F", "Major", "67", "71"],
+                            ["fukumean", "Gunna", "2023", "95,217,315", "130", "C#", "Minor", "85", "62"],
+                            ["La Bebe - Remix", "Peso Pluma, Yng Lvcas", "2023", "553,634,067", "170", "D", "Minor", "81", "48"],
+                            ["un x100to", "Bad Bunny, Grupo Frontera", "2023", "505,671,438", "83", "F#", "Minor", "57", "72"],
+                            ["Super Shy", "NewJeans", "2023", "58,255,150", "150", "F", "Minor", "78", "82"],
+                            ["Flowers", "Miley Cyrus", "2023", "1,316,855,716", "118", "-", "Major", "71", "68"],
+                            ["Daylight", "David Kushner", "2023", "387,570,742", "130", "D", "Minor", "51", "43"]
+                        ]
             },
             {
                 "type": "p",
@@ -211,6 +348,40 @@
                 }
             },
             {
+                "type": "t",
+                "conf": {
+                    "has_header": true,
+                    "table_styles": ["size-xs", "color-1"],
+                    "column_style":[
+                        {
+                            "header": "Track",
+                            "style": ["bold", "size-lg"]
+                        },
+                        {
+                            "header": 8,
+                            "style":["underline"]
+                        }
+                    ]
+                },
+                "value": [
+                            ["Track", "Artist(s)", "Year", "Streams", "BPM", "Key", "Mode", "Dance %", "Energy %"],
+                            ["Seven (feat. Latto)", "Latto, Jung Kook", "2023", "141,381,703", "125", "B", "Major", "80", "83"],
+                            ["LALA", "Myke Towers", "2023", "133,716,286", "92", "C#", "Major", "71", "74"],
+                            ["vampire", "Olivia Rodrigo", "2023", "140,003,974", "138", "F", "Major", "51", "53"],
+                            ["Cruel Summer", "Taylor Swift", "2019", "800,840,817", "170", "A", "Major", "55", "72"],
+                            ["WHERE SHE GOES", "Bad Bunny", "2023", "303,236,322", "144", "A", "Minor", "65", "80"],
+                            ["Sprinter", "Dave, Central Cee", "2023", "183,706,234", "141", "C#", "Major", "92", "58"],
+                            ["Ella Baila Sola", "Eslabon Armado, Peso Pluma", "2023", "725,980,112", "148", "F", "Minor", "67", "76"],
+                            ["Columbia", "Quevedo", "2023", "58,149,378", "100", "F", "Major", "67", "71"],
+                            ["fukumean", "Gunna", "2023", "95,217,315", "130", "C#", "Minor", "85", "62"],
+                            ["La Bebe - Remix", "Peso Pluma, Yng Lvcas", "2023", "553,634,067", "170", "D", "Minor", "81", "48"],
+                            ["un x100to", "Bad Bunny, Grupo Frontera", "2023", "505,671,438", "83", "F#", "Minor", "57", "72"],
+                            ["Super Shy", "NewJeans", "2023", "58,255,150", "150", "F", "Minor", "78", "82"],
+                            ["Flowers", "Miley Cyrus", "2023", "1,316,855,716", "118", "-", "Major", "71", "68"],
+                            ["Daylight", "David Kushner", "2023", "387,570,742", "130", "D", "Minor", "51", "43"]
+                        ]
+            },
+            {
                 "type": "p",
                 "value": "Ipsam in vitae minima",
                 "conf": ["color-2"]
@@ -253,6 +424,40 @@
                     "src": "https://res.cloudinary.com/dmul7uqqz/image/upload/v1606996110/samples/animals/reindeer.jpg",
                     "caption": "Esta es la descripción de una imágen."
                 }
+            },
+            {
+                "type": "t",
+                "conf": {
+                    "has_header": true,
+                    "table_styles": ["size-xs", "color-1"],
+                    "column_style":[
+                        {
+                            "header": "Track",
+                            "style": ["bold", "size-lg"]
+                        },
+                        {
+                            "header": 8,
+                            "style":["underline"]
+                        }
+                    ]
+                },
+                "value": [
+                            ["Track", "Artist(s)", "Year", "Streams", "BPM", "Key", "Mode", "Dance %", "Energy %"],
+                            ["Seven (feat. Latto)", "Latto, Jung Kook", "2023", "141,381,703", "125", "B", "Major", "80", "83"],
+                            ["LALA", "Myke Towers", "2023", "133,716,286", "92", "C#", "Major", "71", "74"],
+                            ["vampire", "Olivia Rodrigo", "2023", "140,003,974", "138", "F", "Major", "51", "53"],
+                            ["Cruel Summer", "Taylor Swift", "2019", "800,840,817", "170", "A", "Major", "55", "72"],
+                            ["WHERE SHE GOES", "Bad Bunny", "2023", "303,236,322", "144", "A", "Minor", "65", "80"],
+                            ["Sprinter", "Dave, Central Cee", "2023", "183,706,234", "141", "C#", "Major", "92", "58"],
+                            ["Ella Baila Sola", "Eslabon Armado, Peso Pluma", "2023", "725,980,112", "148", "F", "Minor", "67", "76"],
+                            ["Columbia", "Quevedo", "2023", "58,149,378", "100", "F", "Major", "67", "71"],
+                            ["fukumean", "Gunna", "2023", "95,217,315", "130", "C#", "Minor", "85", "62"],
+                            ["La Bebe - Remix", "Peso Pluma, Yng Lvcas", "2023", "553,634,067", "170", "D", "Minor", "81", "48"],
+                            ["un x100to", "Bad Bunny, Grupo Frontera", "2023", "505,671,438", "83", "F#", "Minor", "57", "72"],
+                            ["Super Shy", "NewJeans", "2023", "58,255,150", "150", "F", "Minor", "78", "82"],
+                            ["Flowers", "Miley Cyrus", "2023", "1,316,855,716", "118", "-", "Major", "71", "68"],
+                            ["Daylight", "David Kushner", "2023", "387,570,742", "130", "D", "Minor", "51", "43"]
+                        ]
             },
             {
                 "type": "p",

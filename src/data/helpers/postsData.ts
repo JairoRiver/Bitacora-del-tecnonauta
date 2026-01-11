@@ -9,12 +9,17 @@ import postsRaw from '../posts.json';
 export type ParagraphType = 'p';
 export type CodeType = 'c';
 export type ImageType = 'i';
+export type TableType = 't';
 export type ParagraphStyleType = 'size-lg' | 'bold' | 'italic' | 'underline' | 'color-1' | 'color-2' | 'color-3';
+export type CellStyleType = 'size-lg' | 'size-md' | 'size-xs' | 'bold' | 'italic' | 'underline';
 export type LanguageType = 'SQL' | 'TypeScript' | 'Go' | 'Python' | 'Rust';
 export type CodeStyleType = 'color-1' | 'color-2' | 'color-3';
 export type CodeValueType = { language: LanguageType; text: string; };
-export type ImageValueType = {src: string, caption: string};
-type ContentBlock = TextBlock | CodeBlock | ImageBlock;
+export type ImageValueType = { src: string, caption: string };
+export type ColumnStyle = { header: string | number; style: CellStyleType[]; colored_numbers?: boolean }
+export type TableConf = { has_header: boolean; table_styles: CellStyleType[]; column_style: ColumnStyle[]; }
+export type TableValueType = (string | number)[][];
+type ContentBlock = TextBlock | CodeBlock | ImageBlock | TableBlock;
 
 interface TextBlock {
     type: ParagraphType;
@@ -31,6 +36,12 @@ interface CodeBlock {
 interface ImageBlock {
     type: ImageType;
     value: ImageValueType
+}
+
+interface TableBlock {
+    type: TableType,
+    value: TableValueType;
+    conf: TableConf
 }
 
 interface BlogPost {

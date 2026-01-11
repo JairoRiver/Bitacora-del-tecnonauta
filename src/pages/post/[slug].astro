@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Paragraph from "../../components/blog_post_components/Paragraph.astro";
 import CodeBlock from "../../components/blog_post_components/CodeBlock.astro";
 import ImageBlock from "../../components/blog_post_components/ImageBlock.astro"
+import TableBlock from "../../components/blog_post_components/TableBlock.astro"
 
 import { getPostsList, getBlogPost } from "../../data/helpers/postsData";
 
@@ -52,34 +53,18 @@ const { blogContent } = Astro.props;
 
             <h2 class="mt-3 text-xl font-bold">{blogContent.Subtitle}</h2>
 
-            <section class="mt-3">
+            <section class="mt-3 w-full min-w-0">
                 {
                     blogContent.Content.map((content) => {
-                        if (content.type === "p") {
-                            return (
-                                <Paragraph
-                                    type={content.type}
-                                    value={content.value}
-                                    conf={content.conf}
-                                />
-                            );
-                        }
-                        if (content.type === "c") {
-                            return (
-                                <CodeBlock
-                                    type={content.type}
-                                    value={content.value}
-                                    conf={content.conf}
-                                />
-                            );
-                        }
-                        if (content.type === "i") {
-                            return (
-                                <ImageBlock
-                                    type={content.type}
-                                    value={content.value}
-                                />
-                            );
+                        switch (content.type){
+                            case 'p':
+                                return <Paragraph type={content.type} value={content.value} conf={content.conf} />
+                            case 'c': 
+                                return <CodeBlock type={content.type} value={content.value} conf={content.conf} /> 
+                            case 'i':
+                                return <ImageBlock type={content.type} value={content.value} />
+                            case 't':
+                                return <TableBlock type={content.type} value={content.value} conf={content.conf} />
                         }
                     })
                 }

@@ -17,6 +17,14 @@
   --color-light-text-primary: #F4D35E;
   --color-light-text-secundary: #FAF4D3;
   --color-light-text-third: #8BE8CB;
+  --color-light-text-positive: #23CE6B;
+  --color-light-text-negative: #FF8E8C;
+  --color-light-table-principal: #FAF0CA;
+  --color-light-table-secundary: #EAF8BF;
+  --color-light-table-third: #ABE188;
+  --color-light-table-fourth: #F7EF99;
+  --color-light-table-fifth: #C0FDFB;
+  --color-light-table-sixth: #DAFFEF;
   --color-dark-principal: #141301;
   --color-dark-secundary: #2D3047;
   --color-dark-third: #19323C;
@@ -24,5 +32,14 @@
   --color-dark-text-primary: #523F38;
   --color-dark-text-secundary: #004643;
   --color-dark-text-third: #7EA2AA;
+  --color-dark-text-positive: #009848;
+  --color-dark-text-negative: #BF211E;
+  --color-dark-table-principal: #0D3B66;
+  --color-dark-table-secundary: #482728;
+  --color-dark-table-third: #5D675B;
+  --color-dark-table-fourth: #3F292B;
+  --color-dark-table-fifth: #5D737E;
+  --color-dark-table-sixth: #64B6AC;
 }
+
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
