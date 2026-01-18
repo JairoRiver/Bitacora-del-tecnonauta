@@ -1,9 +1,9 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/BlogPostLayout.astro";
 import Paragraph from "../../components/blog_post_components/Paragraph.astro";
 import CodeBlock from "../../components/blog_post_components/CodeBlock.astro";
-import ImageBlock from "../../components/blog_post_components/ImageBlock.astro"
-import TableBlock from "../../components/blog_post_components/TableBlock.astro"
+import ImageBlock from "../../components/blog_post_components/ImageBlock.astro";
+import TableBlock from "../../components/blog_post_components/TableBlock.astro";
 
 import { getPostsList, getBlogPost } from "../../data/helpers/postsData";
 
@@ -22,7 +22,12 @@ export async function getStaticPaths() {
 const { blogContent } = Astro.props;
 ---
 
-<Layout>
+<Layout
+    title={blogContent.Title}
+    description={blogContent.Subtitle}
+    image={blogContent.HeroImage}
+    slug={blogContent.Slug}
+>
     <div class="flex flex-col w-full justify-center items-center">
         <section class="w-11/12 flex flex-col items-start">
             <h1 class="mt-5 text-3xl font-bold">{blogContent.Title}</h1>
@@ -56,15 +61,38 @@ const { blogContent } = Astro.props;
             <section class="mt-3 w-full min-w-0">
                 {
                     blogContent.Content.map((content) => {
-                        switch (content.type){
-                            case 'p':
-                                return <Paragraph type={content.type} value={content.value} conf={content.conf} />
-                            case 'c': 
-                                return <CodeBlock type={content.type} value={content.value} conf={content.conf} /> 
-                            case 'i':
-                                return <ImageBlock type={content.type} value={content.value} />
-                            case 't':
-                                return <TableBlock type={content.type} value={content.value} conf={content.conf} />
+                        switch (content.type) {
+                            case "p":
+                                return (
+                                    <Paragraph
+                                        type={content.type}
+                                        value={content.value}
+                                        conf={content.conf}
+                                    />
+                                );
+                            case "c":
+                                return (
+                                    <CodeBlock
+                                        type={content.type}
+                                        value={content.value}
+                                        conf={content.conf}
+                                    />
+                                );
+                            case "i":
+                                return (
+                                    <ImageBlock
+                                        type={content.type}
+                                        value={content.value}
+                                    />
+                                );
+                            case "t":
+                                return (
+                                    <TableBlock
+                                        type={content.type}
+                                        value={content.value}
+                                        conf={content.conf}
+                                    />
+                                );
                         }
                     })
                 }

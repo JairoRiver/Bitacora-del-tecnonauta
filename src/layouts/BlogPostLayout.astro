@@ -1,0 +1,30 @@
+---
+import Layout from "./Layout.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    image: string;
+    slug: string;
+}
+
+const { title, description, image, slug } = Astro.props;
+const siteUrl = Astro.site
+const postUrl = new URL(`/post/${slug}`, siteUrl);
+---
+<Layout>
+    <Fragment slot="head">
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={postUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+    </Fragment>
+
+    <slot />
+</Layout>

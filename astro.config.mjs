@@ -11,5 +11,6 @@ export default defineConfig({
   redirects: {
     "/category": "/",
     "/post": "/"
-  }
+  },
+  site: 'https://bitacoradelTechnonauta.com',
 });
