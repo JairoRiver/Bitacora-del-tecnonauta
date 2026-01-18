@@ -11,14 +11,28 @@ interface Props {
     conf: ParagraphStyleType[];
 }
 
+// Función para transformar [texto](url) en <a href="url">texto</a>
+const parseMarkdownLinks = (text: string) => {
+    // RegEx:
+    // \[([^\]]+)\] -> Captura el texto entre corchetes
+    // \(([^)]+)\)  -> Captura la URL entre paréntesis
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+    return text.replace(linkRegex, (_, text, url) => {
+        return `<a href="${url}" class="text-dark-text-secundary dark:text-light-text-secundary underline underline-offset-2 hover:opacity-80 transition-opacity" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    });
+};
+
 const { type, value, conf } = Astro.props;
 const activeClasses = conf.map((c) => TAILWIND_PARAGRAPH_MAP[c]);
+const parsedValue = parseMarkdownLinks(value);
 ---
 
 {
     type === "p" && (
-        <p class:list={["mt-3", "max-w-fit", "lg:max-w-4/5", ...activeClasses]}>
-            {value}
-        </p>
+        <p
+            class:list={["mt-3", "max-w-fit", "lg:max-w-4/5", ...activeClasses]}
+            set:html={parsedValue}
+        />
     )
 }
