@@ -1,25 +1,34 @@
 ---
 import Logo from "../assets/logo.svg";
-import ThemeIcon from './ThemeIcon.astro';
-import CategoriesMenu from './CategoriesMenu.astro'
+import ThemeIcon from "./ThemeIcon.astro";
+import CategoriesMenu from "./CategoriesMenu.astro";
 ---
 
 <header
-    class="flex justify-center items-center py-4 bg-light-principal dark:bg-dark-principal dark:text-light-principal"
+    class="z-10 bg-light-principal dark:bg-dark-principal dark:text-light-principal border-b border-dark-third/10 dark:border-light-third/10"
 >
-    <nav class="flex justify-between items-center w-11/12">
-        <h2>
+    <nav
+        class="flex flex-col md:flex-row justify-between items-center w-11/12 mx-auto py-1 gap-2 md:gap-0"
+    >
+        <h2 class="shrink-0">
             <a
                 href="/"
-                class="flex justify-center content-center font-bold text-lg"
-                >Bitácora del Tecnonauta <Logo
+                class="flex items-center font-bold text-lg md:text-xl group"
+            >
+                <span class="text-center md:text-left leading-tight">
+                    Bitácora del Tecnonauta
+                </span>
+                <Logo
                     width={25}
                     height={25}
-                    class="ml-3 dark:stroke-light-principal"
+                    class="ml-3 transition-transform group-hover:rotate-45 dark:stroke-light-principal"
                 />
             </a>
         </h2>
-        <ThemeIcon />
-        <CategoriesMenu />
+
+        <div class="flex items-center gap-4">
+            <ThemeIcon />
+            <CategoriesMenu />
+        </div>
     </nav>
 </header>

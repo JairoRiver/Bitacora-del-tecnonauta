@@ -5,19 +5,20 @@ const today = new Date();
 ---
 
 <footer
-    class="p-2 flex justify-center content-center bg-light-principal dark:bg-dark-principal"
+    class="py-1 px-4 flex flex-col md:flex-row justify-center items-center gap-2 bg-light-principal dark:bg-dark-principal border-t border-dark-third/10 dark:border-light-third/10"
 >
-    <p class=" dark:text-light-principal">
-        &copy; 2025 - {today.getFullYear()} Jairo Rivera. All rights reserved.
+    <p class="text-sm md:text-base text-center dark:text-light-principal opacity-80">
+        &copy; 2025 - {today.getFullYear()} Jairo Rivera. <span class="block md:inline">All rights reserved.</span>
     </p>
-    <div class="flex content-center justify-center gap-5 ml-5">
-        <a href="https://www.linkedin.com/in/jairoriveracueva/" target="_blank">
+    
+    <div class="flex items-center justify-center gap-6 md:ml-5">
+        <a href="https://www.linkedin.com/in/jairoriveracueva/" target="_blank" class="transition-transform hover:scale-110">
             <span class="sr-only">Follow Me on Linkedin</span>
-            <LinkedinLogo width=30 height=30 class="fill-dark-principal hover:fill-dark-secundary dark:fill-light-principal dark:hover:fill-light-secundary"/>
+            <LinkedinLogo width={30} height={30} class="fill-dark-principal hover:fill-dark-secundary dark:fill-light-principal dark:hover:fill-light-secundary"/>
         </a>
-        <a href="https://github.com/JairoRiver" target="_blank">
+        <a href="https://github.com/JairoRiver" target="_blank" class="transition-transform hover:scale-110">
             <span class="sr-only">Jairo Rivera GitHub repo</span>
-            <GithubLogo width=30 height=30 class="fill-dark-principal hover:fill-dark-secundary dark:fill-light-principal dark:hover:fill-light-secundary"/>
+            <GithubLogo width={30} height={30} class="fill-dark-principal hover:fill-dark-secundary dark:fill-light-principal dark:hover:fill-light-secundary"/>
         </a>
     </div>
 </footer>
