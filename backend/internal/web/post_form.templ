@@ -138,6 +138,7 @@ templ PostForm(username string, form PostFormData) {
 				</div>
 			</form>
 		</div>
+		<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
 		<script>
 			async function addBlock(type) {
 				try {
@@ -169,6 +170,14 @@ templ PostForm(username string, form PostFormData) {
 					card.remove();
 					updateBlockOrder();
 				}
+			});
+
+			// Drag & drop reordering
+			Sortable.create(document.getElementById('blocks-container'), {
+				handle: '.drag-handle',
+				animation: 150,
+				ghostClass: 'opacity-40',
+				onEnd: updateBlockOrder,
 			});
 
 			// Ensure block_order is in sync on load (edit page)

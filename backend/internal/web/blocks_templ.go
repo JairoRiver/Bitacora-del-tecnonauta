@@ -78,14 +78,14 @@ func BlockParagraph(b BlockFormData) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" value=\"p\"><div class=\"flex justify-between items-center mb-3\"><span class=\"bg-violet-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Párrafo</span> <button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" value=\"p\"><div class=\"flex justify-between items-center mb-3\"><div class=\"flex items-center gap-2\"><span class=\"drag-handle cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500 select-none text-lg leading-none\" title=\"Arrastrar para reordenar\">⠿</span> <span class=\"bg-violet-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Párrafo</span></div><button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var5 string
 		templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 21, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 24, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 		if templ_7745c5c3_Err != nil {
@@ -98,7 +98,7 @@ func BlockParagraph(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var6 string
 		templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs("p_text_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 27, Col: 27}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 30, Col: 27}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 		if templ_7745c5c3_Err != nil {
@@ -111,7 +111,7 @@ func BlockParagraph(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var7 string
 		templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(b.ParagraphText)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 30, Col: 21}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 33, Col: 21}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
 		if templ_7745c5c3_Err != nil {
@@ -129,7 +129,7 @@ func BlockParagraph(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var8 string
 			templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs("p_conf_" + b.ID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 39, Col: 30}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 42, Col: 30}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 			if templ_7745c5c3_Err != nil {
@@ -142,7 +142,7 @@ func BlockParagraph(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var9 string
 			templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(style)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 40, Col: 20}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 43, Col: 20}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 			if templ_7745c5c3_Err != nil {
@@ -165,7 +165,7 @@ func BlockParagraph(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var10 string
 			templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(style)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 45, Col: 13}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 48, Col: 13}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 			if templ_7745c5c3_Err != nil {
@@ -212,7 +212,7 @@ func BlockCode(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var12 string
 		templ_7745c5c3_Var12, templ_7745c5c3_Err = templ.JoinStringErrs("block-" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 54, Col: 88}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 57, Col: 88}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var12))
 		if templ_7745c5c3_Err != nil {
@@ -225,7 +225,7 @@ func BlockCode(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var13 string
 		templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 54, Col: 111}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 57, Col: 111}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 		if templ_7745c5c3_Err != nil {
@@ -238,20 +238,20 @@ func BlockCode(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var14 string
 		templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs("block_type_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 55, Col: 50}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 58, Col: 50}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "\" value=\"c\"><div class=\"flex justify-between items-center mb-3\"><span class=\"bg-cyan-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Código</span> <button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 18, "\" value=\"c\"><div class=\"flex justify-between items-center mb-3\"><div class=\"flex items-center gap-2\"><span class=\"drag-handle cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500 select-none text-lg leading-none\" title=\"Arrastrar para reordenar\">⠿</span> <span class=\"bg-cyan-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Código</span></div><button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var15 string
 		templ_7745c5c3_Var15, templ_7745c5c3_Err = templ.JoinStringErrs(b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 61, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 67, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var15))
 		if templ_7745c5c3_Err != nil {
@@ -264,7 +264,7 @@ func BlockCode(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var16 string
 		templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs("c_lang_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 68, Col: 28}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 74, Col: 28}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 		if templ_7745c5c3_Err != nil {
@@ -282,7 +282,7 @@ func BlockCode(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var17 string
 			templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(lang)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 73, Col: 19}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 79, Col: 19}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 			if templ_7745c5c3_Err != nil {
@@ -305,7 +305,7 @@ func BlockCode(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var18 string
 			templ_7745c5c3_Var18, templ_7745c5c3_Err = templ.JoinStringErrs(lang)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 77, Col: 13}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 83, Col: 13}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var18))
 			if templ_7745c5c3_Err != nil {
@@ -323,7 +323,7 @@ func BlockCode(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var19 string
 		templ_7745c5c3_Var19, templ_7745c5c3_Err = templ.JoinStringErrs("c_style_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 84, Col: 29}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 90, Col: 29}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var19))
 		if templ_7745c5c3_Err != nil {
@@ -341,7 +341,7 @@ func BlockCode(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var20 string
 			templ_7745c5c3_Var20, templ_7745c5c3_Err = templ.JoinStringErrs(s)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 89, Col: 16}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 95, Col: 16}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var20))
 			if templ_7745c5c3_Err != nil {
@@ -364,7 +364,7 @@ func BlockCode(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var21 string
 			templ_7745c5c3_Var21, templ_7745c5c3_Err = templ.JoinStringErrs(s)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 93, Col: 10}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 99, Col: 10}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var21))
 			if templ_7745c5c3_Err != nil {
@@ -382,7 +382,7 @@ func BlockCode(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var22 string
 		templ_7745c5c3_Var22, templ_7745c5c3_Err = templ.JoinStringErrs("c_text_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 101, Col: 27}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 107, Col: 27}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var22))
 		if templ_7745c5c3_Err != nil {
@@ -395,7 +395,7 @@ func BlockCode(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var23 string
 		templ_7745c5c3_Var23, templ_7745c5c3_Err = templ.JoinStringErrs(b.CodeText)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 104, Col: 16}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 110, Col: 16}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var23))
 		if templ_7745c5c3_Err != nil {
@@ -437,7 +437,7 @@ func BlockImage(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var25 string
 		templ_7745c5c3_Var25, templ_7745c5c3_Err = templ.JoinStringErrs("block-" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 110, Col: 88}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 116, Col: 88}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var25))
 		if templ_7745c5c3_Err != nil {
@@ -450,7 +450,7 @@ func BlockImage(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var26 string
 		templ_7745c5c3_Var26, templ_7745c5c3_Err = templ.JoinStringErrs(b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 110, Col: 111}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 116, Col: 111}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var26))
 		if templ_7745c5c3_Err != nil {
@@ -463,20 +463,20 @@ func BlockImage(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var27 string
 		templ_7745c5c3_Var27, templ_7745c5c3_Err = templ.JoinStringErrs("block_type_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 111, Col: 50}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 117, Col: 50}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var27))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "\" value=\"i\"><div class=\"flex justify-between items-center mb-3\"><span class=\"bg-green-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Imagen</span> <button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 39, "\" value=\"i\"><div class=\"flex justify-between items-center mb-3\"><div class=\"flex items-center gap-2\"><span class=\"drag-handle cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500 select-none text-lg leading-none\" title=\"Arrastrar para reordenar\">⠿</span> <span class=\"bg-green-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Imagen</span></div><button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var28 string
 		templ_7745c5c3_Var28, templ_7745c5c3_Err = templ.JoinStringErrs(b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 117, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 126, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var28))
 		if templ_7745c5c3_Err != nil {
@@ -489,7 +489,7 @@ func BlockImage(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var29 string
 		templ_7745c5c3_Var29, templ_7745c5c3_Err = templ.JoinStringErrs("i_src_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 124, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 133, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var29))
 		if templ_7745c5c3_Err != nil {
@@ -502,7 +502,7 @@ func BlockImage(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var30 string
 		templ_7745c5c3_Var30, templ_7745c5c3_Err = templ.JoinStringErrs(b.ImageSrc)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 125, Col: 22}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 134, Col: 22}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var30))
 		if templ_7745c5c3_Err != nil {
@@ -515,7 +515,7 @@ func BlockImage(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var31 string
 		templ_7745c5c3_Var31, templ_7745c5c3_Err = templ.JoinStringErrs("i_caption_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 134, Col: 30}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 143, Col: 30}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var31))
 		if templ_7745c5c3_Err != nil {
@@ -528,7 +528,7 @@ func BlockImage(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var32 string
 		templ_7745c5c3_Var32, templ_7745c5c3_Err = templ.JoinStringErrs(b.ImageCaption)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 135, Col: 26}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 144, Col: 26}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var32))
 		if templ_7745c5c3_Err != nil {
@@ -570,7 +570,7 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var34 string
 		templ_7745c5c3_Var34, templ_7745c5c3_Err = templ.JoinStringErrs("block-" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 143, Col: 88}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 152, Col: 88}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var34))
 		if templ_7745c5c3_Err != nil {
@@ -583,7 +583,7 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var35 string
 		templ_7745c5c3_Var35, templ_7745c5c3_Err = templ.JoinStringErrs(b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 143, Col: 111}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 152, Col: 111}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var35))
 		if templ_7745c5c3_Err != nil {
@@ -596,20 +596,20 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var36 string
 		templ_7745c5c3_Var36, templ_7745c5c3_Err = templ.JoinStringErrs("block_type_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 144, Col: 50}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 153, Col: 50}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var36))
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 48, "\" value=\"t\"><div class=\"flex justify-between items-center mb-3\"><span class=\"bg-amber-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Tabla</span> <button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 48, "\" value=\"t\"><div class=\"flex justify-between items-center mb-3\"><div class=\"flex items-center gap-2\"><span class=\"drag-handle cursor-grab active:cursor-grabbing text-gray-300 hover:text-gray-500 select-none text-lg leading-none\" title=\"Arrastrar para reordenar\">⠿</span> <span class=\"bg-amber-600 text-white text-xs font-bold px-2 py-0.5 rounded\">Tabla</span></div><button type=\"button\" class=\"remove-block-btn text-red-500 hover:text-red-700 text-sm font-bold cursor-pointer\" data-block-id=\"")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		var templ_7745c5c3_Var37 string
 		templ_7745c5c3_Var37, templ_7745c5c3_Err = templ.JoinStringErrs(b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 150, Col: 24}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 162, Col: 24}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var37))
 		if templ_7745c5c3_Err != nil {
@@ -622,7 +622,7 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var38 string
 		templ_7745c5c3_Var38, templ_7745c5c3_Err = templ.JoinStringErrs("t_has_header_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 157, Col: 34}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 169, Col: 34}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var38))
 		if templ_7745c5c3_Err != nil {
@@ -650,7 +650,7 @@ func BlockTable(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var39 string
 			templ_7745c5c3_Var39, templ_7745c5c3_Err = templ.JoinStringErrs("t_styles_" + b.ID)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 172, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 184, Col: 32}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var39))
 			if templ_7745c5c3_Err != nil {
@@ -663,7 +663,7 @@ func BlockTable(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var40 string
 			templ_7745c5c3_Var40, templ_7745c5c3_Err = templ.JoinStringErrs(style)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 173, Col: 20}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 185, Col: 20}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var40))
 			if templ_7745c5c3_Err != nil {
@@ -686,7 +686,7 @@ func BlockTable(b BlockFormData) templ.Component {
 			var templ_7745c5c3_Var41 string
 			templ_7745c5c3_Var41, templ_7745c5c3_Err = templ.JoinStringErrs(style)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 178, Col: 13}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 190, Col: 13}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var41))
 			if templ_7745c5c3_Err != nil {
@@ -704,7 +704,7 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var42 string
 		templ_7745c5c3_Var42, templ_7745c5c3_Err = templ.JoinStringErrs("t_value_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 188, Col: 28}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 200, Col: 28}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var42))
 		if templ_7745c5c3_Err != nil {
@@ -717,7 +717,7 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var43 string
 		templ_7745c5c3_Var43, templ_7745c5c3_Err = templ.JoinStringErrs(b.TableValue)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 191, Col: 18}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 203, Col: 18}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var43))
 		if templ_7745c5c3_Err != nil {
@@ -730,7 +730,7 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var44 string
 		templ_7745c5c3_Var44, templ_7745c5c3_Err = templ.JoinStringErrs("t_col_style_" + b.ID)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 198, Col: 32}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 210, Col: 32}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var44))
 		if templ_7745c5c3_Err != nil {
@@ -743,7 +743,7 @@ func BlockTable(b BlockFormData) templ.Component {
 		var templ_7745c5c3_Var45 string
 		templ_7745c5c3_Var45, templ_7745c5c3_Err = templ.JoinStringErrs(b.TableColStyle)
 		if templ_7745c5c3_Err != nil {
-			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 201, Col: 21}
+			return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/web/blocks.templ`, Line: 213, Col: 21}
 		}
 		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var45))
 		if templ_7745c5c3_Err != nil {
