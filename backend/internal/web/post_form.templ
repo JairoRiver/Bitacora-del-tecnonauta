@@ -150,6 +150,10 @@ templ PostForm(username string, form PostFormData) {
 					const node = tpl.content.firstElementChild;
 					document.getElementById('blocks-container').appendChild(node);
 					updateBlockOrder();
+					if (type === 't') {
+						const blockId = node.dataset.blockId;
+						if (blockId) initColStyles(blockId, '[]');
+					}
 				} catch (e) {
 					console.error(e);
 					alert('No se pudo añadir el bloque');
@@ -182,6 +186,121 @@ templ PostForm(username string, form PostFormData) {
 
 			// Ensure block_order is in sync on load (edit page)
 			updateBlockOrder();
+
+			// ── Column style editor ──────────────────────────────────────────
+			const COL_STYLES = ['size-lg', 'size-md', 'size-xs', 'bold', 'italic', 'underline'];
+
+			function createColStyleRow(blockId, col) {
+				// col = { header: string|number, style: string[], colored_numbers?: bool }
+				const row = document.createElement('div');
+				row.className = 'flex flex-wrap items-center gap-2 bg-white border border-gray-200 rounded px-3 py-2';
+				row.dataset.colRow = '1';
+
+				const headerInput = document.createElement('input');
+				headerInput.type = 'text';
+				headerInput.placeholder = 'Columna (nº o nombre)';
+				headerInput.value = col.header !== undefined ? String(col.header) : '';
+				headerInput.className = 'border border-gray-300 rounded px-2 py-1 text-xs w-32 focus:outline-none focus:ring-1 focus:ring-amber-400';
+				headerInput.dataset.colHeader = '1';
+				row.appendChild(headerInput);
+
+				for (const s of COL_STYLES) {
+					const lbl = document.createElement('label');
+					lbl.className = 'flex items-center gap-1 text-xs cursor-pointer';
+
+					const cb = document.createElement('input');
+					cb.type = 'checkbox';
+					cb.value = s;
+					cb.dataset.colStyle = '1';
+					if (col.style && col.style.includes(s)) cb.checked = true;
+
+					lbl.appendChild(cb);
+					lbl.appendChild(document.createTextNode(s));
+					row.appendChild(lbl);
+				}
+
+				const coloredLbl = document.createElement('label');
+				coloredLbl.className = 'flex items-center gap-1 text-xs cursor-pointer';
+				const coloredCb = document.createElement('input');
+				coloredCb.type = 'checkbox';
+				coloredCb.dataset.colColored = '1';
+				if (col.colored_numbers) coloredCb.checked = true;
+				coloredLbl.appendChild(coloredCb);
+				coloredLbl.appendChild(document.createTextNode('colored_numbers'));
+				row.appendChild(coloredLbl);
+
+				const removeBtn = document.createElement('button');
+				removeBtn.type = 'button';
+				removeBtn.className = 'remove-col-style-btn ml-auto text-red-400 hover:text-red-600 text-xs font-bold cursor-pointer';
+				removeBtn.dataset.blockId = blockId;
+				removeBtn.textContent = '✕';
+				row.appendChild(removeBtn);
+
+				return row;
+			}
+
+			function initColStyles(blockId, jsonStr) {
+				const container = document.getElementById('col-styles-' + blockId);
+				if (!container) return;
+				container.innerHTML = '';
+				let cols = [];
+				try { cols = JSON.parse(jsonStr || '[]'); } catch (_) {}
+				for (const col of cols) {
+					container.appendChild(createColStyleRow(blockId, col));
+				}
+			}
+
+			function addColStyleRow(blockId) {
+				const container = document.getElementById('col-styles-' + blockId);
+				if (!container) return;
+				container.appendChild(createColStyleRow(blockId, { header: '', style: [] }));
+			}
+
+			function serializeColStyles(blockId) {
+				const container = document.getElementById('col-styles-' + blockId);
+				const hidden = document.getElementById('t_col_style_' + blockId);
+				if (!container || !hidden) return;
+				const rows = container.querySelectorAll('[data-col-row]');
+				const result = [];
+				for (const row of rows) {
+					const header = row.querySelector('[data-col-header]').value.trim();
+					const styles = [...row.querySelectorAll('[data-col-style]:checked')].map(cb => cb.value);
+					const colored = row.querySelector('[data-col-colored]').checked;
+					const col = { header: isNaN(Number(header)) || header === '' ? header : Number(header), style: styles };
+					if (colored) col.colored_numbers = true;
+					result.push(col);
+				}
+				hidden.value = JSON.stringify(result);
+			}
+
+			// Event delegation — "Añadir columna" buttons
+			document.addEventListener('click', function(e) {
+				const addBtn = e.target.closest('.add-col-style-btn');
+				if (addBtn) {
+					addColStyleRow(addBtn.dataset.blockId);
+					return;
+				}
+				const removeBtn = e.target.closest('.remove-col-style-btn');
+				if (removeBtn) {
+					const row = removeBtn.closest('[data-col-row]');
+					if (row) row.remove();
+				}
+			});
+
+			// Serialize column styles for all table blocks before form submit
+			document.querySelector('form').addEventListener('submit', function() {
+				document.querySelectorAll('[id^="col-styles-"]').forEach(function(el) {
+					const blockId = el.id.replace('col-styles-', '');
+					serializeColStyles(blockId);
+				});
+			});
+
+			// Initialize existing table blocks on page load
+			document.querySelectorAll('[id^="col-styles-"]').forEach(function(el) {
+				const blockId = el.id.replace('col-styles-', '');
+				const hidden = document.getElementById('t_col_style_' + blockId);
+				if (hidden) initColStyles(blockId, hidden.value);
+			});
 		</script>
 	}
 }
