@@ -8,15 +8,17 @@ import TableBlock from "../../components/blog_post_components/TableBlock.astro";
 import { getPostsList, getBlogPost } from "../../data/helpers/postsData";
 
 export async function getStaticPaths() {
-    const blogPostsList = getPostsList();
+    const blogPostsList = await getPostsList();
 
-    return blogPostsList.map((blogPost) => {
-        const blogContent = getBlogPost(blogPost.Slug);
-        return {
-            params: { slug: blogPost.Slug },
-            props: { blogContent },
-        };
-    });
+    return Promise.all(
+        blogPostsList.map(async (blogPost) => {
+            const blogContent = await getBlogPost(blogPost.Slug);
+            return {
+                params: { slug: blogPost.Slug },
+                props: { blogContent },
+            };
+        })
+    );
 }
 
 const { blogContent } = Astro.props;

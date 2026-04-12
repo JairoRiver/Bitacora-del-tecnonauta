@@ -8,8 +8,8 @@ import {
 } from "../../data/helpers/postsData";
 
 export async function getStaticPaths() {
-    const categories = getCategories();
-    const cardsData = getCardInfo();
+    const categories = await getCategories();
+    const cardsData = await getCardInfo();
 
     return categories.map((category) => {
         let cardsFilters = cardsData.filter((card) =>

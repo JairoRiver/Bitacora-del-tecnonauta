@@ -1,0 +1,19 @@
+server:
+  host: "0.0.0.0"
+  port: "8080"
+  log_level: "debug" # debug | info | warn | error
+
+database:
+  host: "localhost"
+  port: 5432
+  name: "bitacora_dev"
+  user: "CHANGE_ME"
+  password: "CHANGE_ME"
+  sslmode: "disable"
+
+cdn:
+  provider: "cloudinary"
+
+admin:
+  session_duration: "24h"
+  auth_secret: "CHANGE_ME_use_a_long_random_string"

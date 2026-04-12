@@ -1,0 +1,33 @@
+package web
+
+templ Layout(title string) {
+	<!DOCTYPE html>
+	<html lang="es">
+		<head>
+			<meta charset="UTF-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+			<title>{ title } — Bitácora Admin</title>
+			<script src="https://cdn.tailwindcss.com"></script>
+		</head>
+		<body class="bg-gray-100 text-gray-900 min-h-screen">
+			{ children... }
+		</body>
+	</html>
+}
+
+templ Nav(username string) {
+	<nav class="bg-indigo-900 text-white px-8 py-3 flex justify-between items-center">
+		<a href="/admin/" class="font-bold text-lg text-white no-underline">Bitácora Admin</a>
+		<div class="flex items-center gap-3">
+			<span class="text-indigo-300 text-sm">{ username }</span>
+			<form method="POST" action="/admin/logout">
+				<button
+					type="submit"
+					class="border border-indigo-300 text-indigo-300 text-sm px-3 py-1 rounded hover:bg-indigo-300 hover:text-indigo-900 cursor-pointer"
+				>
+					Salir
+				</button>
+			</form>
+		</div>
+	</nav>
+}

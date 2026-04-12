@@ -1,0 +1,192 @@
+package web
+
+templ PostForm(username string, form PostFormData) {
+	@Layout(formTitle(form)) {
+		@Nav(username)
+		<div class="max-w-3xl mx-auto px-6 py-8">
+			<div class="flex items-center gap-3 mb-6">
+				<a href="/admin/" class="text-gray-400 hover:text-gray-600 text-sm">← Volver</a>
+				<h1 class="text-2xl font-bold">{ formTitle(form) }</h1>
+			</div>
+			if form.Error != "" {
+				<div class="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded mb-6">
+					{ form.Error }
+				</div>
+			}
+			<form method="POST" action={ templ.SafeURL(formAction(form)) }>
+				<!-- Post metadata -->
+				<div class="bg-white rounded-xl shadow p-6 mb-6">
+					<h2 class="text-base font-semibold text-gray-700 mb-4">Datos del post</h2>
+					<div class="mb-4">
+						<label class="block text-sm font-semibold text-gray-700 mb-1" for="title">Título</label>
+						<input
+							id="title"
+							name="title"
+							type="text"
+							value={ form.Title }
+							required
+							class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+						/>
+					</div>
+					<div class="mb-4">
+						<label class="block text-sm font-semibold text-gray-700 mb-1" for="subtitle">Subtítulo</label>
+						<input
+							id="subtitle"
+							name="subtitle"
+							type="text"
+							value={ form.Subtitle }
+							class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+						/>
+					</div>
+					<div class="grid grid-cols-2 gap-4 mb-4">
+						<div>
+							<label class="block text-sm font-semibold text-gray-700 mb-1" for="date">Fecha</label>
+							<input
+								id="date"
+								name="date"
+								type="date"
+								value={ form.Date }
+								required
+								class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+							/>
+						</div>
+						<div>
+							<label class="block text-sm font-semibold text-gray-700 mb-1" for="slug">Slug</label>
+							<input
+								id="slug"
+								name="slug"
+								type="text"
+								value={ form.Slug }
+								required
+								class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+							/>
+						</div>
+					</div>
+					<div class="mb-4">
+						<label class="block text-sm font-semibold text-gray-700 mb-1" for="hero_image">Hero image (URL)</label>
+						<input
+							id="hero_image"
+							name="hero_image"
+							type="url"
+							value={ form.HeroImage }
+							placeholder="https://..."
+							class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+						/>
+					</div>
+					<div>
+						<label class="block text-sm font-semibold text-gray-700 mb-1" for="categories">
+							Categorías <span class="text-gray-400 font-normal">(separadas por coma)</span>
+						</label>
+						<input
+							id="categories"
+							name="categories"
+							type="text"
+							value={ form.Categories }
+							placeholder="Go, Linux, Cloud"
+							class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+						/>
+					</div>
+				</div>
+				<!-- Block editor -->
+				<div class="bg-white rounded-xl shadow p-6 mb-6">
+					<h2 class="text-base font-semibold text-gray-700 mb-4">Contenido</h2>
+					<!-- Add block buttons -->
+					<div class="flex flex-wrap gap-2 mb-4 items-center">
+						<span class="text-sm text-gray-400">Añadir bloque:</span>
+						<button type="button" onclick="addBlock('p')" class="bg-violet-100 hover:bg-violet-200 text-violet-800 text-xs font-semibold px-3 py-1.5 rounded cursor-pointer">
+							+ Párrafo
+						</button>
+						<button type="button" onclick="addBlock('c')" class="bg-cyan-100 hover:bg-cyan-200 text-cyan-800 text-xs font-semibold px-3 py-1.5 rounded cursor-pointer">
+							+ Código
+						</button>
+						<button type="button" onclick="addBlock('i')" class="bg-green-100 hover:bg-green-200 text-green-800 text-xs font-semibold px-3 py-1.5 rounded cursor-pointer">
+							+ Imagen
+						</button>
+						<button type="button" onclick="addBlock('t')" class="bg-amber-100 hover:bg-amber-200 text-amber-800 text-xs font-semibold px-3 py-1.5 rounded cursor-pointer">
+							+ Tabla
+						</button>
+					</div>
+					<!-- Existing blocks -->
+					<div id="blocks-container">
+						for _, b := range form.Blocks {
+							switch b.Type {
+								case "p":
+									@BlockParagraph(b)
+								case "c":
+									@BlockCode(b)
+								case "i":
+									@BlockImage(b)
+								case "t":
+									@BlockTable(b)
+							}
+						}
+					</div>
+					<input type="hidden" id="block_order" name="block_order" value={ form.InitialBlockOrder }/>
+				</div>
+				<!-- Actions -->
+				<div class="flex gap-3">
+					<button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-2 rounded cursor-pointer">
+						if form.IsNew {
+							Crear post
+						} else {
+							Guardar cambios
+						}
+					</button>
+					<a href="/admin/" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold px-6 py-2 rounded">
+						Cancelar
+					</a>
+				</div>
+			</form>
+		</div>
+		<script>
+			async function addBlock(type) {
+				try {
+					const res = await fetch('/admin/blocks/fragment/' + type);
+					if (!res.ok) throw new Error('Error al cargar bloque');
+					const html = await res.text();
+					const tpl = document.createElement('template');
+					tpl.innerHTML = html.trim();
+					const node = tpl.content.firstElementChild;
+					document.getElementById('blocks-container').appendChild(node);
+					updateBlockOrder();
+				} catch (e) {
+					console.error(e);
+					alert('No se pudo añadir el bloque');
+				}
+			}
+
+			function updateBlockOrder() {
+				const cards = document.querySelectorAll('#blocks-container [data-block-id]');
+				const ids = [...cards].map(c => c.dataset.blockId);
+				document.getElementById('block_order').value = ids.join(',');
+			}
+
+			document.addEventListener('click', function(e) {
+				const btn = e.target.closest('.remove-block-btn');
+				if (!btn) return;
+				const card = btn.closest('[data-block-id]');
+				if (card) {
+					card.remove();
+					updateBlockOrder();
+				}
+			});
+
+			// Ensure block_order is in sync on load (edit page)
+			updateBlockOrder();
+		</script>
+	}
+}
+
+func formTitle(form PostFormData) string {
+	if form.IsNew {
+		return "Nuevo post"
+	}
+	return "Editar post"
+}
+
+func formAction(form PostFormData) string {
+	if form.IsNew {
+		return "/admin/posts"
+	}
+	return "/admin/posts/" + form.PostID
+}

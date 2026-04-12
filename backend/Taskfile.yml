@@ -1,0 +1,110 @@
+version: '3'
+
+vars:
+  BINARY: bin/server
+  CMD: ./cmd/server
+  DB_URL:
+    sh: go run ./cmd/dburl
+
+tasks:
+  default:
+    desc: Muestra las tareas disponibles
+    silent: true
+    cmds:
+      - task --list
+
+  # ── Base de datos ──────────────────────────────────────────────────────────
+
+  db:up:
+    desc: Levanta el contenedor de Postgres
+    cmds:
+      - docker compose up -d postgres
+      - docker compose ps postgres
+
+  db:down:
+    desc: Para y elimina el contenedor de Postgres
+    cmds:
+      - docker compose down
+
+  db:logs:
+    desc: Sigue los logs de Postgres
+    cmds:
+      - docker compose logs -f postgres
+
+  db:migrate:
+    desc: Aplica las migraciones pendientes
+    cmds:
+      - migrate -path migrations -database "{{.DB_URL}}" up
+
+  db:migrate:down:
+    desc: Revierte la última migración
+    cmds:
+      - migrate -path migrations -database "{{.DB_URL}}" down 1
+
+  db:migrate:status:
+    desc: Muestra el estado de las migraciones
+    cmds:
+      - migrate -path migrations -database "{{.DB_URL}}" version
+
+  db:seed:
+    desc: Importa posts.json a la base de datos
+    cmds:
+      - go run ./cmd/seed
+
+  admin:create-user:
+    desc: "Crea el usuario admin inicial (uso: task admin:create-user -- --username admin --password secret)"
+    cmds:
+      - go run ./cmd/createadmin {{.CLI_ARGS}}
+
+  # ── Generación de código ──────────────────────────────────────────────────
+
+  generate:
+    desc: Ejecuta todos los generadores (sqlc + templ)
+    deps: [generate:sqlc, generate:templ]
+
+  generate:sqlc:
+    desc: Genera código Go desde las queries SQL
+    cmds:
+      - sqlc generate
+
+  generate:templ:
+    desc: Genera código Go desde los templates templ
+    cmds:
+      - templ generate
+
+  # ── Desarrollo ────────────────────────────────────────────────────────────
+
+  dev:
+    desc: Arranca el servidor con hot reload (requiere air)
+    cmds:
+      - air
+
+  build:
+    desc: Compila el binario del servidor
+    cmds:
+      - go build -o {{.BINARY}} {{.CMD}}
+
+  # ── Tests ─────────────────────────────────────────────────────────────────
+
+  test:
+    desc: Ejecuta todos los tests
+    cmds:
+      - go test ./...
+
+  test:verbose:
+    desc: Ejecuta todos los tests con salida detallada
+    cmds:
+      - go test -v ./...
+
+  test:coverage:
+    desc: Ejecuta tests y muestra cobertura
+    cmds:
+      - go test -coverprofile=coverage.out ./...
+      - go tool cover -html=coverage.out
+
+  # ── Módulos ───────────────────────────────────────────────────────────────
+
+  tidy:
+    desc: Ordena y descarga dependencias Go
+    cmds:
+      - go mod tidy
