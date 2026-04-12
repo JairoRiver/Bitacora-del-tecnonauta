@@ -1,6 +1,14 @@
 // Base URL of the Go backend — set via API_URL in .env at build time.
 const API_URL = import.meta.env.API_URL ?? 'http://localhost:8080';
 
+// API key for authenticating requests — set via API_KEY in .env at build time.
+const API_KEY: string | undefined = import.meta.env.API_KEY;
+
+function authHeaders(): HeadersInit {
+    if (API_KEY) return { 'Authorization': `Bearer ${API_KEY}` };
+    return {};
+}
+
 // ── Type exports (used by components) ────────────────────────────────────────
 
 export type ParagraphType = 'p';
@@ -86,19 +94,19 @@ interface ApiCategory {
 // ── Raw fetch helpers ─────────────────────────────────────────────────────────
 
 async function fetchPosts(): Promise<ApiPostSummary[]> {
-    const res = await fetch(`${API_URL}/api/posts`);
+    const res = await fetch(`${API_URL}/api/posts`, { headers: authHeaders() });
     if (!res.ok) throw new Error(`GET /api/posts failed: ${res.status}`);
     return res.json();
 }
 
 async function fetchPost(slug: string): Promise<ApiPostDetail> {
-    const res = await fetch(`${API_URL}/api/posts/${slug}`);
+    const res = await fetch(`${API_URL}/api/posts/${slug}`, { headers: authHeaders() });
     if (!res.ok) throw new Error(`GET /api/posts/${slug} failed: ${res.status}`);
     return res.json();
 }
 
 async function fetchCategories(): Promise<ApiCategory[]> {
-    const res = await fetch(`${API_URL}/api/categories`);
+    const res = await fetch(`${API_URL}/api/categories`, { headers: authHeaders() });
     if (!res.ok) throw new Error(`GET /api/categories failed: ${res.status}`);
     return res.json();
 }

@@ -92,6 +92,9 @@ func (h *Handler) MountProtected(r chi.Router) {
 	r.Post("/posts/{id}", h.handleUpdatePost)
 	r.Post("/posts/{id}/delete", h.handleDeletePost)
 	r.Get("/blocks/fragment/{type}", h.handleBlockFragment)
+	r.Get("/api-key", h.handleAPIKeyPage)
+	r.Post("/api-key/generate", h.handleAPIKeyGenerate)
+	r.Post("/api-key/delete", h.handleAPIKeyDelete)
 }
 
 // ── Auth handlers ─────────────────────────────────────────────────────────────
@@ -581,4 +584,71 @@ func parseCategoryList(s string) []string {
 
 func slugify(s string) string {
 	return strings.ToLower(strings.ReplaceAll(strings.TrimSpace(s), " ", "-"))
+}
+
+// ── API Key handlers ──────────────────────────────────────────────────────────
+
+func (h *Handler) handleAPIKeyPage(w http.ResponseWriter, r *http.Request) {
+	username, _ := auth.UsernameFromContext(r.Context())
+	data, err := h.apiKeyPageData(r)
+	if err != nil {
+		renderHTML(w, r, APIKeyPage(username, APIKeyPageData{Error: err.Error()}))
+		return
+	}
+	renderHTML(w, r, APIKeyPage(username, data))
+}
+
+func (h *Handler) handleAPIKeyGenerate(w http.ResponseWriter, r *http.Request) {
+	username, _ := auth.UsernameFromContext(r.Context())
+
+	raw, hash, err := auth.GenerateAPIKey()
+	if err != nil {
+		log.Error().Err(err).Msg("failed to generate api key")
+		renderHTML(w, r, APIKeyPage(username, APIKeyPageData{Error: "Error al generar la clave: " + err.Error()}))
+		return
+	}
+
+	// Remove any existing key before inserting the new one.
+	if err := h.queries.DeleteAPIKey(r.Context()); err != nil {
+		log.Error().Err(err).Msg("failed to delete existing api key")
+		renderHTML(w, r, APIKeyPage(username, APIKeyPageData{Error: "Error al eliminar la clave anterior: " + err.Error()}))
+		return
+	}
+
+	newKey, err := h.queries.CreateAPIKey(r.Context(), hash)
+	if err != nil {
+		log.Error().Err(err).Msg("failed to store api key")
+		renderHTML(w, r, APIKeyPage(username, APIKeyPageData{Error: "Error al guardar la clave: " + err.Error()}))
+		return
+	}
+
+	renderHTML(w, r, APIKeyPage(username, APIKeyPageData{
+		Active:    true,
+		CreatedAt: newKey.CreatedAt,
+		NewRawKey: raw,
+	}))
+}
+
+func (h *Handler) handleAPIKeyDelete(w http.ResponseWriter, r *http.Request) {
+	username, _ := auth.UsernameFromContext(r.Context())
+
+	if err := h.queries.DeleteAPIKey(r.Context()); err != nil {
+		log.Error().Err(err).Msg("failed to delete api key")
+		renderHTML(w, r, APIKeyPage(username, APIKeyPageData{Error: "Error al eliminar la clave: " + err.Error()}))
+		return
+	}
+
+	http.Redirect(w, r, "/admin/api-key", http.StatusSeeOther)
+}
+
+// apiKeyPageData reads the current API key state from the DB.
+func (h *Handler) apiKeyPageData(r *http.Request) (APIKeyPageData, error) {
+	key, err := h.queries.GetAPIKey(r.Context())
+	if errors.Is(err, pgx.ErrNoRows) {
+		return APIKeyPageData{Active: false}, nil
+	}
+	if err != nil {
+		return APIKeyPageData{}, err
+	}
+	return APIKeyPageData{Active: true, CreatedAt: key.CreatedAt}, nil
 }

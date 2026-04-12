@@ -38,8 +38,9 @@ func (s *Server) Router() http.Handler {
 
 	r.Get("/health", s.handleHealth)
 
-	// Public API consumed by Astro at build time
+	// Public API consumed by Astro at build time — protected by API key
 	r.Route("/api", func(r chi.Router) {
+		r.Use(auth.RequireAPIKey(s.queries))
 		r.Get("/posts", s.handleListPosts)
 		r.Get("/posts/{slug}", s.handleGetPost)
 		r.Get("/categories", s.handleListCategories)
@@ -84,7 +85,7 @@ func corsMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, OPTIONS")
-		w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 
 		if r.Method == http.MethodOptions {
 			w.WriteHeader(http.StatusNoContent)

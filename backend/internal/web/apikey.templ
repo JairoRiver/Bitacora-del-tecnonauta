@@ -1,0 +1,147 @@
+package web
+
+import "time"
+
+type APIKeyPageData struct {
+	// Active is true when there is a key configured in the database.
+	Active bool
+	// CreatedAt is the creation timestamp of the active key (zero if none).
+	CreatedAt time.Time
+	// NewRawKey is only populated immediately after generation.
+	// It must be shown once and never persisted.
+	NewRawKey string
+	// Error holds an optional error message.
+	Error string
+}
+
+templ APIKeyPage(username string, d APIKeyPageData) {
+	@Layout("API Key") {
+		@Nav(username)
+		<div class="max-w-2xl mx-auto px-6 py-8">
+			<div class="flex items-center gap-3 mb-6">
+				<a href="/admin/" class="text-gray-400 hover:text-gray-600 text-sm">← Volver</a>
+				<h1 class="text-2xl font-bold">API Key</h1>
+			</div>
+			if d.Error != "" {
+				<div class="bg-red-50 border border-red-200 text-red-700 text-sm px-4 py-3 rounded mb-6">
+					{ d.Error }
+				</div>
+			}
+			<!-- One-time key display after generation -->
+			if d.NewRawKey != "" {
+				<div class="bg-green-50 border border-green-300 rounded-xl p-5 mb-6">
+					<p class="text-sm font-semibold text-green-800 mb-2">
+						✓ API key generada. Cópiala ahora — no volverá a mostrarse.
+					</p>
+					<div class="flex items-center gap-2">
+						<code
+							id="raw-key"
+							class="flex-1 bg-white border border-green-200 rounded px-3 py-2 text-sm font-mono text-gray-800 break-all select-all"
+						>{ d.NewRawKey }</code>
+						<button
+							type="button"
+							onclick="copyKey()"
+							class="shrink-0 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-3 py-2 rounded cursor-pointer"
+						>
+							Copiar
+						</button>
+					</div>
+					<p class="text-xs text-green-700 mt-2">
+						Añádela a <code class="font-mono bg-green-100 px-1 rounded">frontend/.env</code> como <code class="font-mono bg-green-100 px-1 rounded">API_KEY=&lt;clave&gt;</code>
+					</p>
+				</div>
+			}
+			<!-- Current status card -->
+			<div class="bg-white rounded-xl shadow p-6 mb-6">
+				<h2 class="text-base font-semibold text-gray-700 mb-4">Estado actual</h2>
+				if d.Active {
+					<div class="flex items-center gap-2 mb-1">
+						<span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500"></span>
+						<span class="text-sm font-medium text-gray-800">API key activa</span>
+					</div>
+					<p class="text-xs text-gray-500 ml-4.5">
+						Creada el { d.CreatedAt.Format("02/01/2006 15:04") }
+					</p>
+				} else {
+					<div class="flex items-center gap-2">
+						<span class="inline-block w-2.5 h-2.5 rounded-full bg-red-400"></span>
+						<span class="text-sm font-medium text-gray-600">Sin API key configurada</span>
+					</div>
+					<p class="text-xs text-gray-400 mt-1 ml-4.5">
+						Todas las peticiones a <code class="font-mono">/api/*</code> devolverán 401.
+					</p>
+				}
+			</div>
+			<!-- Actions -->
+			<div class="flex flex-col gap-4">
+				<!-- Generate -->
+				<div class="bg-white rounded-xl shadow p-6">
+					<h3 class="text-sm font-semibold text-gray-700 mb-1">
+						if d.Active {
+							Regenerar API key
+						} else {
+							Generar API key
+						}
+					</h3>
+					<p class="text-xs text-gray-500 mb-4">
+						if d.Active {
+							Se eliminará la clave actual y se creará una nueva. El frontend dejará de funcionar hasta que actualices el <code class="font-mono">.env</code>.
+						} else {
+							Genera una clave para proteger las rutas públicas del API.
+						}
+					</p>
+					<form
+						method="POST"
+						action="/admin/api-key/generate"
+						if d.Active {
+							onsubmit="return confirm('¿Regenerar la API key? La clave actual quedará inválida.')"
+						}
+					>
+						<button
+							type="submit"
+							class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-5 py-2 rounded cursor-pointer"
+						>
+							if d.Active {
+								Regenerar
+							} else {
+								Generar
+							}
+						</button>
+					</form>
+				</div>
+				<!-- Delete (only shown when active) -->
+				if d.Active {
+					<div class="bg-white rounded-xl shadow p-6">
+						<h3 class="text-sm font-semibold text-gray-700 mb-1">Eliminar API key</h3>
+						<p class="text-xs text-gray-500 mb-4">
+							Desactiva la protección de las rutas del API. Todas las peticiones quedarán bloqueadas (401) hasta que generes una nueva clave.
+						</p>
+						<form
+							method="POST"
+							action="/admin/api-key/delete"
+							onsubmit="return confirm('¿Eliminar la API key? Las rutas del API quedarán bloqueadas.')"
+						>
+							<button
+								type="submit"
+								class="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-5 py-2 rounded cursor-pointer"
+							>
+								Eliminar
+							</button>
+						</form>
+					</div>
+				}
+			</div>
+		</div>
+		<script>
+			function copyKey() {
+				const code = document.getElementById('raw-key');
+				if (!code) return;
+				navigator.clipboard.writeText(code.textContent.trim()).then(function() {
+					const btn = code.nextElementSibling;
+					btn.textContent = '✓ Copiada';
+					setTimeout(() => btn.textContent = 'Copiar', 2000);
+				});
+			}
+		</script>
+	}
+}

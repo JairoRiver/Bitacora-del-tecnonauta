@@ -57,6 +57,12 @@ func (ns NullBlockType) Value() (driver.Value, error) {
 	return string(ns.BlockType), nil
 }
 
+type ApiKey struct {
+	ID        uuid.UUID `json:"id"`
+	KeyHash   string    `json:"key_hash"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
 type Category struct {
 	ID   uuid.UUID `json:"id"`
 	Name string    `json:"name"`

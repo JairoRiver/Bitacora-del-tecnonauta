@@ -13,12 +13,15 @@ import (
 type Querier interface {
 	AddPostCategory(ctx context.Context, arg AddPostCategoryParams) error
 	ClearPostCategories(ctx context.Context, postID uuid.UUID) error
+	CreateAPIKey(ctx context.Context, keyHash string) (ApiKey, error)
 	CreateContentBlock(ctx context.Context, arg CreateContentBlockParams) (ContentBlock, error)
 	CreatePost(ctx context.Context, arg CreatePostParams) (Post, error)
 	CreateUser(ctx context.Context, arg CreateUserParams) (User, error)
+	DeleteAPIKey(ctx context.Context) error
 	DeleteContentBlock(ctx context.Context, id uuid.UUID) error
 	DeleteContentBlocksByPostID(ctx context.Context, postID uuid.UUID) error
 	DeletePost(ctx context.Context, id uuid.UUID) error
+	GetAPIKey(ctx context.Context) (ApiKey, error)
 	GetCategoriesByPostID(ctx context.Context, postID uuid.UUID) ([]Category, error)
 	GetContentBlocksByPostID(ctx context.Context, postID uuid.UUID) ([]ContentBlock, error)
 	GetOrCreateCategory(ctx context.Context, arg GetOrCreateCategoryParams) (Category, error)
