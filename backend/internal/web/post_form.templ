@@ -150,10 +150,9 @@ templ PostForm(username string, form PostFormData) {
 					const node = tpl.content.firstElementChild;
 					document.getElementById('blocks-container').appendChild(node);
 					updateBlockOrder();
-					if (type === 't') {
-						const blockId = node.dataset.blockId;
-						if (blockId) initColStyles(blockId, '[]');
-					}
+					const blockId = node.dataset.blockId;
+					if (type === 't' && blockId) initColStyles(blockId, '[]');
+					if (type === 'p' && blockId) applyParagraphPreview(blockId);
 				} catch (e) {
 					console.error(e);
 					alert('No se pudo añadir el bloque');
@@ -300,6 +299,77 @@ templ PostForm(username string, form PostFormData) {
 				const blockId = el.id.replace('col-styles-', '');
 				const hidden = document.getElementById('t_col_style_' + blockId);
 				if (hidden) initColStyles(blockId, hidden.value);
+			});
+
+			// ── Paragraph style preview ──────────────────────────────────────
+			// Maps style name → CSS properties to apply to the textarea
+			const PARAGRAPH_STYLE_CSS = {
+				'bold':      { fontWeight: 'bold' },
+				'italic':    { fontStyle: 'italic' },
+				'underline': { textDecoration: 'underline' },
+				'size-lg':   { fontSize: '1.125rem' },
+			};
+			// color-* styles use custom theme tokens unavailable in the admin;
+			// we approximate them with a colored left border on the textarea.
+			const PARAGRAPH_COLOR_BORDER = {
+				'color-1': '#6366f1', // indigo (primary)
+				'color-2': '#8b5cf6', // violet (secondary)
+				'color-3': '#ec4899', // pink (third)
+			};
+
+			function applyParagraphPreview(blockId) {
+				const block = document.getElementById('block-' + blockId);
+				if (!block) return;
+				const textarea = block.querySelector('textarea[name="p_text_' + blockId + '"]');
+				if (!textarea) return;
+
+				const checked = [...block.querySelectorAll('input[name="p_conf_' + blockId + '"]:checked')]
+					.map(cb => cb.value);
+
+				// Reset all preview styles
+				Object.assign(textarea.style, {
+					fontWeight: '',
+					fontStyle: '',
+					textDecoration: '',
+					fontSize: '',
+					borderLeftWidth: '',
+					borderLeftColor: '',
+					borderLeftStyle: '',
+				});
+
+				let colorStyle = null;
+				for (const style of checked) {
+					if (PARAGRAPH_STYLE_CSS[style]) {
+						Object.assign(textarea.style, PARAGRAPH_STYLE_CSS[style]);
+					}
+					if (PARAGRAPH_COLOR_BORDER[style]) {
+						colorStyle = PARAGRAPH_COLOR_BORDER[style];
+					}
+				}
+				if (colorStyle) {
+					textarea.style.borderLeftWidth = '4px';
+					textarea.style.borderLeftStyle = 'solid';
+					textarea.style.borderLeftColor = colorStyle;
+				}
+			}
+
+			// Listen for style checkbox changes inside paragraph blocks
+			document.addEventListener('change', function(e) {
+				const cb = e.target.closest('input[type="checkbox"]');
+				if (!cb) return;
+				const nameAttr = cb.getAttribute('name') || '';
+				if (!nameAttr.startsWith('p_conf_')) return;
+				const blockId = nameAttr.replace('p_conf_', '');
+				applyParagraphPreview(blockId);
+			});
+
+			// Initialize preview for existing paragraph blocks on page load (edit page)
+			document.querySelectorAll('[id^="block-"]').forEach(function(el) {
+				const blockId = el.id.replace('block-', '');
+				// Only act on paragraph blocks (they have a p_text_ textarea)
+				if (el.querySelector('textarea[name="p_text_' + blockId + '"]')) {
+					applyParagraphPreview(blockId);
+				}
 			});
 		</script>
 	}
